@@ -5,6 +5,7 @@ import BoardsList from '../components/BoardsList/BoardsList';
 import NotFoundPage from '../components/NotFoundPage/NotFoundPage';
 import Header from '../components/Header/Header';
 import Footer from '../components/Footer/Footer';
+import ListsList from '../components/ListsList/ListsList';
 
 export const history = createHistory();
 
@@ -14,6 +15,7 @@ const AppRouter = () => (
 			<Header />
 			<Switch>
 				<Route path="/" exact component={BoardsList} />
+				<Route path="/board/:id" component={ListsList} />
 				<Route component={NotFoundPage} />
 			</Switch>
 			<Footer />
