@@ -6,7 +6,8 @@ import { boardStatuses } from '../config';
 export const addBoard = createAction('ADD_BOARD', name => ({
 	id: uuid(),
 	name,
-	status: boardStatuses.active
+	status: boardStatuses.active,
+	listsInBoard: []
 }));
 
 // MOVE_BOARD_TO_RECYCLE

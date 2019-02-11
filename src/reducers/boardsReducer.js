@@ -1,22 +1,26 @@
 import { handleActions } from 'redux-actions';
 import * as boardsActions from '../actions/boardsActions';
 import { boardStatuses } from '../config';
+import { cutItem, changeItemStatus } from '../utils/stateManipulations';
 
 const defaultState = [
 	{
 		id: 1,
 		name: 'Sports',
-		status: 'ACTIVE'
+		status: 'ACTIVE',
+		listsInBoard: [1, 2]
 	},
 	{
 		id: 2,
 		name: 'Hobbies',
-		status: 'ACTIVE'
+		status: 'ACTIVE',
+		listsInBoard: []
 	},
 	{
 		id: 3,
 		name: 'Plans',
-		status: 'ACTIVE'
+		status: 'ACTIVE',
+		listsInBoard: [3]
 	}
 ];
 
@@ -28,15 +32,11 @@ export default handleActions(
 		},
 		// MOVE_BOARD_TO_RECYCLE reducer
 		[boardsActions.moveBoardToRecycle](state, { payload: boardId }) {
-			const targetBoard = state.find(board => board.id === boardId);
-			const restBoards = state.filter(board => board.id !== boardId);
-			const updatedBoard = { ...targetBoard, status: boardStatuses.recycle };
-			return [...restBoards, updatedBoard];
+			return changeItemStatus(state, boardId, boardStatuses.recycle);
 		},
 		// REMOVE_BOARD reducer
 		[boardsActions.removeBoard](state, { payload: boardId }) {
-			const newState = state.filter(board => board.id !== boardId);
-			return newState;
+			return cutItem(state, boardId);
 		}
 	},
 	defaultState

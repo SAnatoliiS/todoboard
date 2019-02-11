@@ -1,11 +1,9 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import {
-	boardsReducer as boards
-	// lists,
-	// listsInBoards,
+	boardsReducer as boards,
+	listsReducer as lists
 	// tasks,
-	// tasksInLists
 } from '../reducers/reducers';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -13,11 +11,9 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 export default () => {
 	const store = createStore(
 		combineReducers({
-			boards
-			// lists,
-			// listsInBoards,
+			boards,
+			lists
 			// tasks,
-			// tasksInLists
 		}),
 		composeEnhancers(applyMiddleware(thunk))
 	);
