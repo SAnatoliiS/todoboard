@@ -1,4 +1,10 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { addBoard } from '../../actions/boardsActions';
+
+const mapDispatchToProps = dispatch => ({
+	addBoard: board => dispatch(addBoard(board))
+});
 
 const RenderSmallButton = ({ onClick }) => {
 	return <div onClick={onClick}>Add board</div>;
@@ -14,19 +20,21 @@ class RenderFullButton extends Component {
 		this.setState({ name });
 	};
 
-	onCreate = e => {
+	onSubmit = e => {
 		e.preventDefault();
-		console.log(this.state.name);
+		this.props.addBoard(this.state.name);
+		this.props.collapseButton();
+		this.setState({ name: '' });
 	};
 
 	render() {
-		const { onCancel } = this.props;
+		const { collapseButton } = this.props;
 		return (
 			<div>
 				<div>
-					Creating a board<span onClick={onCancel}> X</span>
+					Creating a board<span onClick={collapseButton}> X</span>
 				</div>
-				<form onSubmit={this.onCreate}>
+				<form onSubmit={this.onSubmit}>
 					<label>What shall we call the board?</label>
 					<input
 						type="text"
@@ -34,7 +42,7 @@ class RenderFullButton extends Component {
 						onChange={this.onChange}
 						placeholder="Your new board's name"
 					/>
-					<button onClick={onCancel}>Cancel</button>
+					<button onClick={collapseButton}>Cancel</button>
 					<input type="submit" value="Create" />
 				</form>
 			</div>
@@ -60,9 +68,19 @@ export class AddBoardButton extends Component {
 			case 'small':
 				return <RenderSmallButton onClick={this.expandButton} />;
 			case 'full':
-				return <RenderFullButton onCancel={this.collapseButton} />;
+				return (
+					<RenderFullButton
+						addBoard={this.props.addBoard}
+						collapseButton={this.collapseButton}
+					/>
+				);
+			default:
+				return <RenderSmallButton onClick={this.expandButton} />;
 		}
 	}
 }
 
-export default AddBoardButton;
+export default connect(
+	null,
+	mapDispatchToProps
+)(AddBoardButton);
