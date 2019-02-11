@@ -11,7 +11,7 @@ export const activeBoardsSelector = createSelector(
 export const getFindBoardSelector = boardId =>
 	createSelector(
 		boardsSelector,
-		boards => boards.find(board => board.id == boardId)
+		boards => boards.find(board => board.id === boardId)
 	);
 
 export const getIdsOfListsInBoardSelector = boardId =>

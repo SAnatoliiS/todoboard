@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { getListsInBoardSelector } from '../../selectors/boardsSelectors';
 
 const mapStateToProps = (state, props) => ({
-	lists: getListsInBoardSelector(props.match.params.id, state.lists)(state)
+	lists: getListsInBoardSelector(+props.match.params.id, state.lists)(state)
 });
 
 function ListsList(props) {
