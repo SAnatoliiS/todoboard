@@ -21,7 +21,7 @@ class RenderFullButton extends Component {
 	};
 
 	onSubmit = e => {
-		e.preventDefault('asd');
+		e.preventDefault();
 		this.props.addBoard(this.state.name);
 		this.props.collapseButton();
 		this.setState({ name: '' });

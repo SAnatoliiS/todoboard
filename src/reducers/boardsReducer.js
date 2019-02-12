@@ -5,19 +5,19 @@ import { cutItem, changeItemStatus } from '../utils/stateManipulations';
 
 const defaultState = [
 	{
-		id: 1,
+		id: '1',
 		name: 'Sports',
 		status: 'ACTIVE',
 		listsInBoard: [1, 2]
 	},
 	{
-		id: 2,
+		id: '2',
 		name: 'Hobbies',
 		status: 'ACTIVE',
 		listsInBoard: []
 	},
 	{
-		id: 3,
+		id: '3',
 		name: 'Plans',
 		status: 'ACTIVE',
 		listsInBoard: [3]
