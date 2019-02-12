@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { moveBoardToRecycle } from '../../actions/boardsActions';
 
 const mapDispatchToProps = dispatch => ({
@@ -13,7 +14,8 @@ function Board({ name, id, moveBoardToRecycle }) {
 	return (
 		<div>
 			<div>
-				{name}
+				<Link to={`/board/${id}`}>{name}</Link>
+
 				<span onClick={onClickDelete(id)}>X</span>
 			</div>
 		</div>

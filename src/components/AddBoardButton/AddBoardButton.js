@@ -21,7 +21,7 @@ class RenderFullButton extends Component {
 	};
 
 	onSubmit = e => {
-		e.preventDefault();
+		e.preventDefault('asd');
 		this.props.addBoard(this.state.name);
 		this.props.collapseButton();
 		this.setState({ name: '' });
@@ -42,8 +42,8 @@ class RenderFullButton extends Component {
 						onChange={this.onChange}
 						placeholder="Your new board's name"
 					/>
-					<button onClick={collapseButton}>Cancel</button>
 					<input type="submit" value="Create" />
+					<button onClick={collapseButton}>Cancel</button>
 				</form>
 			</div>
 		);
