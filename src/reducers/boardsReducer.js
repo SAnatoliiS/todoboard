@@ -1,31 +1,31 @@
-import { handleActions } from "redux-actions";
-import * as boardsActions from "../actions/boardsActions";
-import * as listsActions from "../actions/listsActions";
-import { boardStatuses } from "../config";
+import { handleActions } from 'redux-actions';
+import * as boardsActions from '../actions/boardsActions';
+import * as listsActions from '../actions/listsActions';
+import { boardStatuses } from '../config';
 import {
   cutItem,
   changeItemStatus,
   addItemToParentList
-} from "../utils/stateManipulations";
+} from '../utils/stateManipulations';
 
 const defaultState = [
   {
-    id: "1",
-    name: "Sports",
-    status: "ACTIVE",
-    listsInBoard: [1, 2]
+    id: '1',
+    name: 'Sports',
+    status: 'ACTIVE',
+    listsInBoard: ['1', '2']
   },
   {
-    id: "2",
-    name: "Hobbies",
-    status: "ACTIVE",
+    id: '2',
+    name: 'Hobbies',
+    status: 'ACTIVE',
     listsInBoard: []
   },
   {
-    id: "3",
-    name: "Plans",
-    status: "ACTIVE",
-    listsInBoard: [3]
+    id: '3',
+    name: 'Plans',
+    status: 'ACTIVE',
+    listsInBoard: ['3']
   }
 ];
 
@@ -45,7 +45,7 @@ export default handleActions(
     },
     // ADD_BOARD reducer
     [listsActions.addList](state, { payload: list }) {
-      return addItemToParentList(state, "list", list.boardId, list.id);
+      return addItemToParentList(state, 'list', list.boardId, list.id);
     }
   },
   defaultState

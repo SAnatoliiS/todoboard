@@ -1,10 +1,12 @@
 module.exports = {
-	boardStatuses: {
-		active: 'ACTIVE',
-		recycle: 'RECYCLE'
-	},
-	listStatuses: {
-		active: 'ACTIVE',
-		recycle: 'RECYCLE'
-	}
+  statuses: {
+    boards: {
+      active: 'ACTIVE',
+      recycle: 'RECYCLE'
+    },
+    lists: {
+      active: 'ACTIVE',
+      recycle: 'RECYCLE'
+    }
+  }
 };

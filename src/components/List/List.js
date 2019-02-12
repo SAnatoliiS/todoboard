@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react';
 
 class RenderList extends React.Component {
   state = {
-    text: ""
+    text: ''
   };
   onChange = e => {
     const text = e.target.value;

@@ -21,12 +21,14 @@ export const changeItemStatus = (state, itemId, newStatus) => {
   return replaceItem(state, updatedItem);
 };
 
-const getNameField = type => {
+export const getNameField = type => {
   switch (type) {
-    case "list":
-      return "listsInBoard";
-    case "task":
-      return "tasksInList";
+    case 'list':
+      return 'listsInBoard';
+    case 'task':
+      return 'tasksInList';
+    default:
+      throw new Error('No such type. Type must be "list" or "task"');
   }
 };
 
