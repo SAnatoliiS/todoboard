@@ -50,6 +50,8 @@ class RenderList extends React.Component {
   render() {
     const { list, tasks } = this.props;
     const filteredTasks = filterTasks(this.state.filterValue, tasks);
+    const activeTasks = filterTasks('active', tasks);
+    const completedTasks = filterTasks('comleted', tasks);
     return (
       <div>
         <div>{list.name}</div>
@@ -59,12 +61,14 @@ class RenderList extends React.Component {
         {filteredTasks.map(task => (
           <Task key={task.id} task={task} />
         ))}
-        <div>{`${filteredTasks.length} items left`}</div>
+        <div>{`${activeTasks.length} items left`}</div>
         <div>
           <span onClick={this.pickFilter('all')}>All</span>
           <span onClick={this.pickFilter('active')}>Active</span>
           <span onClick={this.pickFilter('comleted')}>Completed</span>
         </div>
+        {completedTasks.length > 0 && <div>Clear completed</div>}
+
         <hr />
       </div>
     );
