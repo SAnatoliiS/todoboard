@@ -71,7 +71,6 @@ export const getListOfChildrenId = (type, parentId) =>
     findItem(type, parentId),
     parent => {
       const res = parent[getChildrenFieldName(type)];
-      // console.log(getChildrenFieldName(type));
       return res;
     }
   );
@@ -94,7 +93,6 @@ export const getChildren = (type, parentId, childrenFullList) =>
       const res = childrenIdList.map(id =>
         childrenFullList.find(child => child.id === id)
       );
-      console.log(res);
       return res;
     }
   );

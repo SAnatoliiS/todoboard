@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getChildren, getActiveChildren } from '../../selectors/selectors';
+import { getActiveChildren } from '../../selectors/selectors';
 import RenderList from '../List/List';
 import AddListButton from '../AddListButton/AddListButton';
 
@@ -11,7 +11,7 @@ const mapStateToProps = (state, props) => ({
   boardId: props.match.params.id
 });
 
-function ListsList({ lists, boardId, activeLists }) {
+function ListsList({ boardId, activeLists }) {
   return (
     <div>
       {activeLists.map(list => (

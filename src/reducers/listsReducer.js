@@ -1,7 +1,12 @@
 import { handleActions } from 'redux-actions';
 import * as listsActions from '../actions/listsActions';
+import * as tasksActions from '../actions/tasksActions';
 import { listStatuses } from '../config';
-import { cutItem, changeItemStatus } from '../utils/stateManipulations';
+import {
+  cutItem,
+  changeItemStatus,
+  addItemToParentList
+} from '../utils/stateManipulations';
 
 const defaultState = [
   {
@@ -9,14 +14,14 @@ const defaultState = [
     name: 'Snowboard',
     boardId: '1',
     status: 'ACTIVE',
-    tasksInList: []
+    tasksInList: ['1', '2']
   },
   {
     id: '2',
     name: 'Footbal',
     boardId: '1',
     status: 'ACTIVE',
-    tasksInList: []
+    tasksInList: ['3']
   },
   {
     id: '3',
@@ -40,6 +45,10 @@ export default handleActions(
     // REMOVE_LIST reducer
     [listsActions.removeList](state, { payload: listId }) {
       return cutItem(state, listId);
+    },
+    // ADD_TASK reducer
+    [tasksActions.addTask](state, { payload: task }) {
+      return addItemToParentList(state, 'task', task.listId, task.id);
     }
   },
   defaultState

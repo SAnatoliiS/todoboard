@@ -16,7 +16,6 @@ export const replaceItem = (state, newItem) => {
 
 export const changeItemStatus = (state, itemId, newStatus) => {
   const targetItem = findItem(state, itemId);
-  const restItems = cutItem(state, itemId);
   const updatedItem = { ...targetItem, status: newStatus };
   return replaceItem(state, updatedItem);
 };

@@ -1,13 +1,13 @@
 import { createAction } from 'redux-actions';
 import uuid from 'uuid';
-import { boardStatuses } from '../config';
+import { statuses } from '../config';
 
 // ADD_BOARD
 export const addBoard = createAction('ADD_BOARD', name => ({
-	id: uuid(),
-	name,
-	status: boardStatuses.active,
-	listsInBoard: []
+  id: uuid(),
+  name,
+  status: statuses.boards.active,
+  listsInBoard: []
 }));
 
 // MOVE_BOARD_TO_RECYCLE
