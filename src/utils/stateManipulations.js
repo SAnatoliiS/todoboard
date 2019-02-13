@@ -27,7 +27,9 @@ export const getNameField = type => {
     case 'task':
       return 'tasksInList';
     default:
-      throw new Error('No such type. Type must be "list" or "task"');
+      throw new Error(
+        `Type ${type} is not exist. Type must be "list" or "task"`
+      );
   }
 };
 
@@ -37,4 +39,23 @@ export const addItemToParentList = (state, type, parentItemId, targetId) => {
   const newField = [...parentItem[nameField], targetId];
   const updatedParentItem = { ...parentItem, [nameField]: newField };
   return replaceItem(state, updatedParentItem);
+};
+
+const getNextProgressState = oldState => {
+  switch (oldState) {
+    case 'IN_PROGRESS':
+      return 'DONE';
+    case 'DONE':
+      return 'IN_PROGRESS';
+    default:
+      throw new Error(
+        `Progress state ${oldState} is not exist. It might be "IN_PROGRESS" or "DONE"`
+      );
+  }
+};
+
+export const changeItemProgressStatus = (state, taskId) => {
+  const item = findItem(state, taskId);
+  const newItem = { ...item, progress: getNextProgressState(item.progress) };
+  return replaceItem(state, newItem);
 };

@@ -1,23 +1,34 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getActiveChildren } from '../../selectors/selectors';
+import { getActiveChildren, findItem } from '../../selectors/selectors';
 import RenderList from '../List/List';
 import AddListButton from '../AddListButton/AddListButton';
+import NotFoundPage from '../NotFoundPage/NotFoundPage';
 
-const mapStateToProps = (state, props) => ({
-  activeLists: getActiveChildren('boards', props.match.params.id, state.lists)(
-    state
-  ),
-  boardId: props.match.params.id
-});
+const mapStateToProps = (state, props) => {
+  const board = findItem('boards', props.match.params.id)(state);
+  return {
+    board,
+    activeLists:
+      board &&
+      getActiveChildren('boards', props.match.params.id, state.lists)(state),
+    error: !board && 'Board not found'
+  };
+};
 
-function ListsList({ boardId, activeLists }) {
+function ListsList({ activeLists, error, board }) {
+  if (error) {
+    return <NotFoundPage message={error} />;
+  }
   return (
     <div>
-      {activeLists.map(list => (
-        <RenderList key={list.id} list={list} />
-      ))}
-      <AddListButton boardId={boardId} />
+      <div>{board.name}</div>
+      <div>
+        {activeLists.map(list => (
+          <RenderList key={list.id} list={list} />
+        ))}
+        <AddListButton boardId={board.id} />
+      </div>
     </div>
   );
 }

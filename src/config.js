@@ -12,5 +12,9 @@ module.exports = {
       active: 'ACTIVE',
       recycle: 'RECYCLE'
     }
+  },
+  progressStatuses: {
+    inProgress: 'IN_PROGRESS',
+    done: 'DONE'
   }
 };
