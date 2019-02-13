@@ -1,14 +1,14 @@
 import { createAction } from 'redux-actions';
 import uuid from 'uuid';
-import { listStatuses } from '../config';
+import { statuses } from '../config';
 
 // ADD_LIST
 export const addList = createAction('ADD_LIST', (name, boardId) => ({
-	id: uuid(),
-	name,
-	boardId,
-	status: listStatuses.active,
-	tasksInList: []
+  id: uuid(),
+  name,
+  boardId,
+  status: statuses.lists.active,
+  tasksInList: []
 }));
 
 // MOVE_LIST_TO_RECYCLE

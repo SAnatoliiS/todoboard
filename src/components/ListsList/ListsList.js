@@ -1,18 +1,20 @@
-import React from "react";
-import { connect } from "react-redux";
-import { getListsInBoardSelector } from "../../selectors/boardsSelectors";
-import RenderList from "../List/List";
-import AddListButton from "../AddListButton/AddListButton";
+import React from 'react';
+import { connect } from 'react-redux';
+import { getChildren, getActiveChildren } from '../../selectors/selectors';
+import RenderList from '../List/List';
+import AddListButton from '../AddListButton/AddListButton';
 
 const mapStateToProps = (state, props) => ({
-  lists: getListsInBoardSelector(props.match.params.id, state.lists)(state),
+  activeLists: getActiveChildren('boards', props.match.params.id, state.lists)(
+    state
+  ),
   boardId: props.match.params.id
 });
 
-function ListsList({ lists, boardId }) {
+function ListsList({ lists, boardId, activeLists }) {
   return (
     <div>
-      {lists.map(list => (
+      {activeLists.map(list => (
         <RenderList key={list.id} list={list} />
       ))}
       <AddListButton boardId={boardId} />
