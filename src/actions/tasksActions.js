@@ -17,6 +17,7 @@ export const moveTaskToRecycle = createAction('MOVE_TASK_TO_RECYCLE');
 // REMOVE_TASK
 export const removeTask = createAction('REMOVE_TASK');
 
+//CHANGE_TASK_PROGRESS_STATUS
 export const changeTaskProgressStatus = createAction(
   'CHANGE_TASK_PROGRESS_STATUS'
 );

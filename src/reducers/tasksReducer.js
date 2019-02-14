@@ -1,6 +1,6 @@
 import { handleActions } from 'redux-actions';
 import * as tasksActions from '../actions/tasksActions';
-import { listStatuses } from '../config';
+import { statuses } from '../config';
 import {
   cutItem,
   changeItemStatus,
@@ -39,7 +39,7 @@ export default handleActions(
     },
     // MOVE_TASK_TO_RECYCLE reducer
     [tasksActions.moveTaskToRecycle](state, { payload: taskId }) {
-      return changeItemStatus(state, taskId, listStatuses.recycle);
+      return changeItemStatus(state, taskId, statuses.tasks.recycle);
     },
     // REMOVE_TASK reducer
     [tasksActions.removeTask](state, { payload: taskId }) {
