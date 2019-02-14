@@ -37,12 +37,13 @@ export default handleActions(
     [tasksActions.addTask](state, { payload: task }) {
       return [...state, task];
     },
-    // MOVE_TASK_TO_RECYCLE reducer
-    [tasksActions.moveTaskToRecycle](state, { payload: taskId }) {
-      return changeItemStatus(state, taskId, statuses.tasks.recycle);
-    },
     // REMOVE_TASK reducer
-    [tasksActions.removeTask](state, { payload: taskId }) {
+    [tasksActions.removeTask](
+      state,
+      {
+        payload: { taskId }
+      }
+    ) {
       return cutItem(state, taskId);
     },
     // CHANGE_TASK_PROGRESS_STATUS reducer

@@ -7,10 +7,6 @@ module.exports = {
     lists: {
       active: 'ACTIVE',
       recycle: 'RECYCLE'
-    },
-    tasks: {
-      active: 'ACTIVE',
-      recycle: 'RECYCLE'
     }
   },
   progressStatuses: {

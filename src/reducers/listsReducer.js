@@ -5,7 +5,8 @@ import { listStatuses } from '../config';
 import {
   cutItem,
   changeItemStatus,
-  addItemToParentList
+  addItemToParentList,
+  cutChild
 } from '../utils/stateManipulations';
 
 const defaultState = [
@@ -49,6 +50,15 @@ export default handleActions(
     // ADD_TASK reducer
     [tasksActions.addTask](state, { payload: task }) {
       return addItemToParentList(state, 'task', task.listId, task.id);
+    },
+    // REMOVE_TASK reducer
+    [tasksActions.removeTask](
+      state,
+      {
+        payload: { listId, taskId }
+      }
+    ) {
+      return cutChild(state, 'task', listId, taskId);
     }
   },
   defaultState

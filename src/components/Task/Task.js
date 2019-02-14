@@ -2,20 +2,20 @@ import React from 'react';
 import { progressStatuses } from '../../config';
 import {
   changeTaskProgressStatus,
-  moveTaskToRecycle
+  removeTask
 } from '../../actions/tasksActions';
 import { connect } from 'react-redux';
 
 const mapDispatchToProps = dispatch => ({
   changeTaskProgressStatus: taskId =>
     dispatch(changeTaskProgressStatus(taskId)),
-  moveTaskToRecycle: taskId => dispatch(moveTaskToRecycle(taskId))
+  removeTask: (taskId, listId) => dispatch(removeTask(taskId, listId))
 });
 
 const getTaskProgressIcon = progress => {
   switch (progress) {
     case progressStatuses.inProgress:
-      return '🗸';
+      return '○';
     case progressStatuses.done:
       return '✓';
     default:
@@ -26,21 +26,21 @@ const getTaskProgressIcon = progress => {
 };
 
 function Task({
-  task: { text, status, progress, id },
+  task: { text, progress, id, listId },
   changeTaskProgressStatus,
-  moveTaskToRecycle
+  removeTask
 }) {
   const onClick = id => () => {
     changeTaskProgressStatus(id);
   };
-  const onRemove = id => () => {
-    moveTaskToRecycle(id);
+  const onRemove = (id, listId) => () => {
+    removeTask(id, listId);
   };
   return (
     <div>
       <span onClick={onClick(id)}>{getTaskProgressIcon(progress)}</span>
       {text}
-      <span onClick={onRemove(id)}> x</span>
+      <span onClick={onRemove(id, listId)}> x</span>
     </div>
   );
 }

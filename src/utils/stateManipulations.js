@@ -59,3 +59,13 @@ export const changeItemProgressStatus = (state, taskId) => {
   const newItem = { ...item, progress: getNextProgressState(item.progress) };
   return replaceItem(state, newItem);
 };
+
+export const cutChild = (state, childType, parentId, childId) => {
+  const parent = findItem(state, parentId);
+  const nameChildrenField = getNameField(childType);
+  const updatedChildren = parent[nameChildrenField].filter(
+    id => id !== childId
+  );
+  const updatedParent = { ...parent, [nameChildrenField]: updatedChildren };
+  return replaceItem(state, updatedParent);
+};
