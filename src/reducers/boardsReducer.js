@@ -43,6 +43,10 @@ export default handleActions(
 		[boardsActions.removeBoard](state, { payload: boardId }) {
 			return cutItem(state, boardId);
 		},
+		// RESTORE_BOARD reducer
+		[boardsActions.restoreBoard](state, { payload: boardId }) {
+			return changeItemStatus(state, boardId, statuses.boards.active);
+		},
 		// ADD_LIST reducer
 		[listsActions.addList](state, { payload: list }) {
 			return addItemToParentList(state, 'list', list.boardId, list.id);
