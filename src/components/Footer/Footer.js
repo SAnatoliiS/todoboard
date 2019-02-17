@@ -50,29 +50,31 @@ class Footer extends React.Component {
 					alt="recycle"
 					onClick={this.toggleRecycleBin}
 				/>
-				<div>
-					{this.props.recycleBoards.map(board => (
-						<div key={board.id}>
-							<div>
-								{board.name}
-								<img
-									src={imgRestore}
-									height={20}
-									width={20}
-									alt="restore"
-									onClick={this.onRestoreBoard(board.id)}
-								/>
-								<img
-									src={imgDelete}
-									height={20}
-									width={20}
-									alt="remove"
-									onClick={this.onRemoveBoard(board.id)}
-								/>
+				{this.state.isRecycleBinOpen && (
+					<div>
+						{this.props.recycleBoards.map(board => (
+							<div key={board.id}>
+								<div>
+									{board.name}
+									<img
+										src={imgRestore}
+										height={20}
+										width={20}
+										alt="restore"
+										onClick={this.onRestoreBoard(board.id)}
+									/>
+									<img
+										src={imgDelete}
+										height={20}
+										width={20}
+										alt="remove"
+										onClick={this.onRemoveBoard(board.id)}
+									/>
+								</div>
 							</div>
-						</div>
-					))}
-				</div>
+						))}
+					</div>
+				)}
 			</div>
 		);
 	}
