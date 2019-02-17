@@ -4,8 +4,9 @@ import imgRestore from './restore.png';
 import imgDelete from './delete.png';
 import { getRecycleItems } from '../../selectors/selectors';
 import { connect } from 'react-redux';
-import { restoreBoard, removeBoard } from '../../actions/boardsActions';
+import { restoreBoard } from '../../actions/boardsActions';
 import { restoreList, removeList } from '../../actions/listsActions';
+import { removeBoardTree } from '../../thunks/boardThunks';
 
 const mapStateToProps = state => ({
 	recycleBoards: getRecycleItems('boards')(state),
@@ -15,7 +16,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
 	restoreBoard: boardId => dispatch(restoreBoard(boardId)),
 	restoreList: boardId => dispatch(restoreList(boardId)),
-	removeBoard: boardId => dispatch(removeBoard(boardId)),
+	removeBoard: boardId => dispatch(removeBoardTree(boardId)),
 	removeList: boardId => dispatch(removeList(boardId))
 });
 
