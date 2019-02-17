@@ -5,7 +5,8 @@ import { statuses } from '../config';
 import {
 	cutItem,
 	changeItemStatus,
-	addItemToParentList
+	addItemToParentList,
+	cutChild
 } from '../utils/stateManipulations';
 
 const defaultState = [
@@ -50,6 +51,10 @@ export default handleActions(
 		// ADD_LIST reducer
 		[listsActions.addList](state, { payload: list }) {
 			return addItemToParentList(state, 'list', list.boardId, list.id);
+		},
+		// REMOVE_LIST reducer
+		[listsActions.removeList](state, { payload: listId }) {
+			return cutChild(state, 'list', listId);
 		}
 	},
 	defaultState

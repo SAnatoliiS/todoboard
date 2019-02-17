@@ -5,8 +5,9 @@ import imgDelete from './delete.png';
 import { getRecycleItems } from '../../selectors/selectors';
 import { connect } from 'react-redux';
 import { restoreBoard } from '../../actions/boardsActions';
-import { restoreList, removeList } from '../../actions/listsActions';
+import { restoreList } from '../../actions/listsActions';
 import { removeBoardTree } from '../../thunks/boardThunks';
+import { removeListTree } from '../../thunks/listThunks';
 
 const mapStateToProps = state => ({
 	recycleBoards: getRecycleItems('boards')(state),
@@ -17,7 +18,7 @@ const mapDispatchToProps = dispatch => ({
 	restoreBoard: boardId => dispatch(restoreBoard(boardId)),
 	restoreList: boardId => dispatch(restoreList(boardId)),
 	removeBoard: boardId => dispatch(removeBoardTree(boardId)),
-	removeList: boardId => dispatch(removeList(boardId))
+	removeList: boardId => dispatch(removeListTree(boardId))
 });
 
 class Footer extends React.Component {
@@ -52,27 +53,52 @@ class Footer extends React.Component {
 				/>
 				{this.state.isRecycleBinOpen && (
 					<div>
-						{this.props.recycleBoards.map(board => (
-							<div key={board.id}>
-								<div>
-									{board.name}
-									<img
-										src={imgRestore}
-										height={20}
-										width={20}
-										alt="restore"
-										onClick={this.onRestoreBoard(board.id)}
-									/>
-									<img
-										src={imgDelete}
-										height={20}
-										width={20}
-										alt="remove"
-										onClick={this.onRemoveBoard(board.id)}
-									/>
+						<div>
+							{this.props.recycleBoards.map(board => (
+								<div key={board.id}>
+									<div>
+										{board.name}
+										<img
+											src={imgRestore}
+											height={20}
+											width={20}
+											alt="restore"
+											onClick={this.onRestoreBoard(board.id)}
+										/>
+										<img
+											src={imgDelete}
+											height={20}
+											width={20}
+											alt="remove"
+											onClick={this.onRemoveBoard(board.id)}
+										/>
+									</div>
 								</div>
-							</div>
-						))}
+							))}
+						</div>
+						<div>
+							{this.props.recycleLists.map(list => (
+								<div key={list.id}>
+									<div>
+										{list.name}
+										<img
+											src={imgRestore}
+											height={20}
+											width={20}
+											alt="restore"
+											onClick={this.onRestoreList(list.id)}
+										/>
+										<img
+											src={imgDelete}
+											height={20}
+											width={20}
+											alt="remove"
+											onClick={this.onRemoveList(list.id)}
+										/>
+									</div>
+								</div>
+							))}
+						</div>
 					</div>
 				)}
 			</div>

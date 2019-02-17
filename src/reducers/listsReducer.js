@@ -62,7 +62,7 @@ export default handleActions(
 				payload: { listId, taskId }
 			}
 		) {
-			return cutChild(state, 'task', listId, taskId);
+			return cutChild(state, 'task', taskId);
 		}
 	},
 	defaultState
