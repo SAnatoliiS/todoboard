@@ -8,17 +8,17 @@ const mapDispatchToProps = dispatch => ({
 });
 
 function Board({ name, id, moveBoardToRecycle }) {
-	const onClickDelete = id => () => {
+	const onClickDelete = id => event => {
+		event.preventDefault();
 		moveBoardToRecycle(id);
 	};
 	return (
-		<div>
-			<div>
-				<Link to={`/board/${id}`}>{name}</Link>
-
-				<span onClick={onClickDelete(id)}>X</span>
+		<Link className={'board'} to={`/board/${id}`}>
+			<div className={'board-button-close'} onClick={onClickDelete(id)}>
+				X
 			</div>
-		</div>
+			<div className={'board-content'}>{name}</div>
+		</Link>
 	);
 }
 

@@ -7,7 +7,11 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const RenderSmallButton = ({ onClick }) => {
-	return <div onClick={onClick}>Add board</div>;
+	return (
+		<div className={'board'} onClick={onClick}>
+			Add board
+		</div>
+	);
 };
 
 class RenderFullButton extends Component {

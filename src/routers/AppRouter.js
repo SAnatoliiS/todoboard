@@ -11,14 +11,14 @@ export const history = createHistory();
 
 const AppRouter = () => (
 	<Router history={history}>
-		<div>
-			<Header />
-			<Switch>
+		<div className={'app-container'}>
+			<Header className={'app-header'} />
+			<Switch className={'app-switch'}>
 				<Route path="/" exact component={BoardsList} />
 				<Route path="/board/:id" component={ListsList} />
 				<Route component={NotFoundPage} />
 			</Switch>
-			<Footer />
+			<Footer className={'app-footer'} />
 		</div>
 	</Router>
 );

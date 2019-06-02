@@ -1,0 +1,10 @@
+.board_list-container {
+	display: flex;
+	flex: auto;
+	flex-direction: row;
+	justify-content: flex-start;
+	border: 3px dotted blue;
+	padding: 10px 30px;
+	align-content: flex-start;
+	flex-wrap: wrap;
+}

@@ -5,18 +5,18 @@ import { getActiveItems } from '../../selectors/selectors';
 import AddBoardButton from '../AddBoardButton/AddBoardButton';
 
 const mapStateToProps = state => ({
-  boards: getActiveItems('boards')(state)
+	boards: getActiveItems('boards')(state)
 });
 
 function BoardsList({ boards }) {
-  return (
-    <div>
-      <AddBoardButton />
-      {boards.map(board => (
-        <Board key={board.id} name={board.name} id={board.id} />
-      ))}
-    </div>
-  );
+	return (
+		<div className={'board_list-container'}>
+			<AddBoardButton />
+			{boards.map(board => (
+				<Board key={board.id} name={board.name} id={board.id} />
+			))}
+		</div>
+	);
 }
 
 export default connect(mapStateToProps)(BoardsList);

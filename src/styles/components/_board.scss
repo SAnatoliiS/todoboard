@@ -1,0 +1,24 @@
+.board {
+	border: 1px solid black;
+	margin: 20px;
+	min-width: 300px;
+	min-height: 120px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+}
+
+.board-button-close {
+	border: 1px solid red;
+	position: absolute;
+	top: -3px;
+	right: -3px;
+	width: 20px;
+	height: 20px;
+}
+
+.board-content {
+	margin: auto;
+}
