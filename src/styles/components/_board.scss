@@ -1,7 +1,7 @@
 .board {
 	border: 1px solid black;
 	margin: 20px;
-	min-width: 300px;
+	flex: 0 1 300px;
 	min-height: 120px;
 	display: flex;
 	flex-direction: column;

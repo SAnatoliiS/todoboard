@@ -1,0 +1,26 @@
+.listsList-container {
+	border: 1px solid black;
+	flex: 1;
+	padding: 10px 30px;
+	display: flex;
+	flex-direction: column;
+}
+
+.listsList-header-container {
+	border: 1px solid black;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+}
+
+.listsList-header {
+	border: 1px solid black;
+	font-size: 30px;
+	color: white;
+	background-color: $green;
+	text-shadow: 0px 0px 2px black;
+	padding: 25px;
+	min-width: 250px;
+	display: flex;
+	justify-content: center;
+}
