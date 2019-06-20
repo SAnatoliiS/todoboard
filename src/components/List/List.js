@@ -57,7 +57,7 @@ class RenderList extends React.Component {
 	onClearCompleted = listId => () => {
 		this.props.clearCompleted(listId);
 	};
-	RenderListFooter = (list, tasks) => {
+	renderListFooter = (list, tasks) => {
 		if (tasks.length === 0) {
 			return null;
 		}
@@ -65,8 +65,10 @@ class RenderList extends React.Component {
 		const completedTasks = filterTasks('comleted', tasks);
 
 		return (
-			<div>
-				<div>{`${activeTasks.length} items left`}</div>
+			<div className={'list-footer'}>
+				<div className={'list-footer-left_items'}>{`${
+					activeTasks.length
+				} items left`}</div>
 				<div>
 					<span onClick={this.pickFilter('all')}>All</span>
 					<span onClick={this.pickFilter('active')}>Active</span>
@@ -75,8 +77,6 @@ class RenderList extends React.Component {
 				{completedTasks.length > 0 && (
 					<div onClick={this.onClearCompleted(list.id)}>Clear completed</div>
 				)}
-
-				<hr />
 			</div>
 		);
 	};
@@ -84,18 +84,30 @@ class RenderList extends React.Component {
 		const { list, tasks } = this.props;
 		const filteredTasks = filterTasks(this.state.filterValue, tasks);
 		return (
-			<div>
-				<div>
-					{list.name}
-					<span onClick={this.onRecycleList(list.id)}> x</span>
+			<div className={'list-container'}>
+				<div className={'list-header'}>
+					<div className={'list-header--title'}>{list.name}</div>
+
+					<div
+						onClick={this.onRecycleList(list.id)}
+						className={'list-header--remove-button'}
+					>
+						x
+					</div>
 				</div>
-				<form onSubmit={this.onSubmit}>
-					<input type="text" value={this.state.text} onChange={this.onChange} />
-				</form>
-				{filteredTasks.map(task => (
-					<Task key={task.id} task={task} />
-				))}
-				{this.RenderListFooter(list, tasks)}
+				<div className={'list-body'}>
+					<form onSubmit={this.onSubmit}>
+						<input
+							type="text"
+							value={this.state.text}
+							onChange={this.onChange}
+						/>
+					</form>
+					{filteredTasks.map(task => (
+						<Task key={task.id} task={task} />
+					))}
+				</div>
+				{this.renderListFooter(list, tasks)}
 			</div>
 		);
 	}

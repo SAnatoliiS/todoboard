@@ -1,0 +1,47 @@
+.list-container {
+	border: 1px solid black;
+	display: flex;
+	flex-direction: column;
+	width: 250px;
+	margin: 0px 20px 20px 0px;
+	position: relative;
+}
+
+.list-header {
+	border-bottom: 1px solid black;
+	height: 40px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.list-header--remove-button {
+	position: absolute;
+	right: -3px;
+	top: -3px;
+	border: 1px solid black;
+	height: 20px;
+	width: 20px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.list-header--title {
+	color: $font-black;
+}
+
+.list-body {
+	flex-grow: 1;
+}
+
+.list-footer {
+	display: flex;
+	flex-direction: row;
+	border-top: 1px solid black;
+}
+
+.list-footer-left_items {
+	font-size: 14px;
+	color: $font-gray;
+}
