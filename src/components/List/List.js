@@ -47,7 +47,10 @@ class RenderList extends React.PureComponent {
 
 	onSubmit = e => {
 		this.props.addTask(this.state.text.trim(), this.props.list.id);
-		this.setState({ text: '' });
+		this.setState({
+			text: '',
+			textareaHeight: 0
+		});
 	};
 
 	pickFilter = newFilterValue => () => {
