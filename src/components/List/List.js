@@ -101,7 +101,12 @@ class RenderList extends React.PureComponent {
 						activeTasks.length
 					} items left`}</div>
 					{completedTasks.length > 0 && (
-						<div onClick={this.onClearCompleted(list.id)}>Clear completed</div>
+						<div
+							className="clear_completed-button"
+							onClick={this.onClearCompleted(list.id)}
+						>
+							Clear completed
+						</div>
 					)}
 				</div>
 			</div>

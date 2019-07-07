@@ -7,7 +7,7 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const RenderSmallButton = ({ expandButton }) => (
-	<div onClick={expandButton} className={'list-container'}>
+	<div onClick={expandButton} className={'list-container-button'}>
 		Add a list...
 	</div>
 );
@@ -40,7 +40,9 @@ class Form extends Component {
 						placeholder="Add a list..."
 					/>
 				</form>
-				<span onClick={this.props.collapseButton}>x</span>
+				<span className="cancel-button" onClick={this.props.collapseButton}>
+					x
+				</span>
 			</div>
 		);
 	}
