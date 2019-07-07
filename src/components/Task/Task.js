@@ -12,19 +12,6 @@ const mapDispatchToProps = dispatch => ({
 	removeTask: (taskId, listId) => dispatch(removeTask(taskId, listId))
 });
 
-const getTaskProgressIcon = progress => {
-	switch (progress) {
-		case progressStatuses.inProgress:
-			return '○';
-		case progressStatuses.done:
-			return '✓';
-		default:
-			throw new Error(
-				'no such task status. It might be: "ACTIVE", "RECYCLE" or "DONE"'
-			);
-	}
-};
-
 function Task({
 	task: { text, progress, id, listId },
 	changeTaskProgressStatus,
@@ -33,9 +20,11 @@ function Task({
 	const onClick = id => () => {
 		changeTaskProgressStatus(id);
 	};
+
 	const onRemove = (id, listId) => () => {
 		removeTask(id, listId);
 	};
+
 	return (
 		<div className={'task-container'}>
 			<div className={'task-checkbox-button'} onClick={onClick(id)}>
@@ -49,6 +38,19 @@ function Task({
 		</div>
 	);
 }
+
+const getTaskProgressIcon = progress => {
+	switch (progress) {
+		case progressStatuses.inProgress:
+			return '○';
+		case progressStatuses.done:
+			return '✓';
+		default:
+			throw new Error(
+				'no such task status. It might be: "ACTIVE", "RECYCLE" or "DONE"'
+			);
+	}
+};
 
 export default connect(
 	null,
