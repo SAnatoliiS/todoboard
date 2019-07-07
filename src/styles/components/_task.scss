@@ -1,0 +1,31 @@
+.task-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	height: 50px;
+	margin: 5px;
+	border-radius: 10px;
+	background-color: $green-off;
+}
+
+.task-title {
+	flex: 1;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	font-weight: 600;
+}
+
+.task-checkbox-button {
+	width: 40px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.task-close-button {
+	width: 40px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}

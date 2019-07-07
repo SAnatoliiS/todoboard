@@ -2,7 +2,7 @@
 	border: 1px solid black;
 	display: flex;
 	flex-direction: column;
-	width: 250px;
+	width: 280px;
 	margin: 0px 20px 20px 0px;
 	position: relative;
 }
@@ -27,21 +27,64 @@
 	align-items: center;
 }
 
+div[className$='-button'] {
+	cursor: pointer;
+}
+
 .list-header--title {
 	color: $font-black;
 }
 
 .list-body {
 	flex-grow: 1;
+	display: flex;
+	flex-direction: column;
 }
 
 .list-footer {
 	display: flex;
-	flex-direction: row;
+	flex-direction: column;
 	border-top: 1px solid black;
+	font-size: 15px;
+	color: $font-gray;
+	padding: 5px;
 }
 
-.list-footer-left_items {
-	font-size: 14px;
-	color: $font-gray;
+.list-footer-filter_list {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+}
+
+.list-footer-bottom_container {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	margin-top: 5px;
+}
+
+.list-footer-filter_item-button {
+	border: 1px solid $gray-border;
+	border-radius: 3px;
+	padding: 0px 4px;
+}
+
+.list-form {
+	display: flex;
+	align-items: stretch;
+	overflow: hidden;
+}
+
+.list-textarea {
+	all: unset;
+	flex: 1;
+	margin: 5px;
+	border-radius: 10px;
+	background-color: white;
+	padding: 10px;
+	font-size: 16px;
+	font-weight: 600;
+	word-wrap: break-word;
+	text-overflow: clip;
+	overflow: auto;
 }
