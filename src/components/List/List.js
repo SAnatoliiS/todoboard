@@ -17,6 +17,149 @@ const mapDispatchToProps = dispatch => ({
 	clearCompleted: listId => dispatch(clearCompletedTasks(listId))
 });
 
+class RenderList extends React.PureComponent {
+	state = {
+		text: '',
+		filterValue: 'all',
+		textareaHeight: 0
+	};
+
+	render() {
+		const { list, tasks } = this.props;
+
+		return (
+			<div className={'list-container'}>
+				<div className={'list-header'}>
+					<div className={'list-header--title'}>{list.name}</div>
+
+					<div
+						onClick={this.onRecycleList(list.id)}
+						className={'list-header--remove-button'}
+					>
+						x
+					</div>
+				</div>
+				{this.renderListBody(tasks)}
+				{this.renderListFooter(list, tasks)}
+			</div>
+		);
+	}
+
+	onSubmit = e => {
+		this.props.addTask(this.state.text.trim(), this.props.list.id);
+		this.setState({ text: '' });
+	};
+
+	pickFilter = newFilterValue => () => {
+		this.setState({ filterValue: newFilterValue });
+		this.setState({ text: undefined });
+		console.log(this.state.text);
+	};
+
+	onRecycleList = listId => () => {
+		this.props.moveToRecycle(listId);
+	};
+
+	onClearCompleted = listId => () => {
+		this.props.clearCompleted(listId);
+	};
+
+	renderListFooter = (list, tasks) => {
+		if (tasks.length === 0) {
+			return null;
+		}
+		const activeTasks = filterTasks('active', tasks);
+		const completedTasks = filterTasks('comleted', tasks);
+
+		return (
+			<div className={'list-footer'}>
+				<div className={'list-footer-filter_list'}>
+					<span
+						className={'list-footer-filter_item-button'}
+						onClick={this.pickFilter('all')}
+					>
+						All
+					</span>
+					<span
+						className={'list-footer-filter_item-button'}
+						onClick={this.pickFilter('active')}
+					>
+						Active
+					</span>
+					<span
+						className={'list-footer-filter_item-button'}
+						onClick={this.pickFilter('comleted')}
+					>
+						Completed
+					</span>
+				</div>
+				<div className={'list-footer-bottom_container'}>
+					<div className={'list-footer-left_items'}>{`${
+						activeTasks.length
+					} items left`}</div>
+					{completedTasks.length > 0 && (
+						<div onClick={this.onClearCompleted(list.id)}>Clear completed</div>
+					)}
+				</div>
+			</div>
+		);
+	};
+
+	onChange = event => {
+		const e = { ...event };
+		const text = e.target.value;
+
+		/** Insert "Enter" */
+		if (e.nativeEvent.inputType === 'insertLineBreak') {
+			if (text.trim().length) {
+				this.onSubmit();
+				return;
+			}
+			return;
+		}
+
+		this.setState(
+			{
+				text: text.trim().length ? text : '',
+				textareaHeight: 0
+			},
+			() => {
+				this.setState({
+					textareaHeight: e.target.scrollHeight - 20 // padding*2 === 20
+				});
+			}
+		);
+	};
+
+	renderTextField = () => {
+		return (
+			<textarea
+				value={this.state.text}
+				rows={1}
+				style={{
+					minHeight: this.state.textareaHeight
+				}}
+				onChange={this.onChange}
+				className={'list-textarea'}
+				placeholder={'Insert new task...'}
+			/>
+		);
+	};
+
+	renderListBody = tasks => {
+		const filteredTasks = filterTasks(this.state.filterValue, tasks);
+
+		return (
+			<div className={'list-body'}>
+				{this.renderTextField()}
+				{filteredTasks.map(task => (
+					<Task key={task.id} task={task} />
+				))}
+			</div>
+		);
+	};
+}
+
 const filterTasks = (filterValue, tasks) => {
 	switch (filterValue) {
 		case 'all':
@@ -33,85 +176,6 @@ const filterTasks = (filterValue, tasks) => {
 			);
 	}
 };
-
-class RenderList extends React.Component {
-	state = {
-		text: '',
-		filterValue: 'all'
-	};
-	onChange = e => {
-		const text = e.target.value;
-		this.setState({ text });
-	};
-	onSubmit = e => {
-		e.preventDefault();
-		this.props.addTask(this.state.text, this.props.list.id);
-		this.setState({ text: '' });
-	};
-	pickFilter = newFilterValue => () => {
-		this.setState({ filterValue: newFilterValue });
-	};
-	onRecycleList = listId => () => {
-		this.props.moveToRecycle(listId);
-	};
-	onClearCompleted = listId => () => {
-		this.props.clearCompleted(listId);
-	};
-	renderListFooter = (list, tasks) => {
-		if (tasks.length === 0) {
-			return null;
-		}
-		const activeTasks = filterTasks('active', tasks);
-		const completedTasks = filterTasks('comleted', tasks);
-
-		return (
-			<div className={'list-footer'}>
-				<div className={'list-footer-left_items'}>{`${
-					activeTasks.length
-				} items left`}</div>
-				<div>
-					<span onClick={this.pickFilter('all')}>All</span>
-					<span onClick={this.pickFilter('active')}>Active</span>
-					<span onClick={this.pickFilter('comleted')}>Completed</span>
-				</div>
-				{completedTasks.length > 0 && (
-					<div onClick={this.onClearCompleted(list.id)}>Clear completed</div>
-				)}
-			</div>
-		);
-	};
-	render() {
-		const { list, tasks } = this.props;
-		const filteredTasks = filterTasks(this.state.filterValue, tasks);
-		return (
-			<div className={'list-container'}>
-				<div className={'list-header'}>
-					<div className={'list-header--title'}>{list.name}</div>
-
-					<div
-						onClick={this.onRecycleList(list.id)}
-						className={'list-header--remove-button'}
-					>
-						x
-					</div>
-				</div>
-				<div className={'list-body'}>
-					<form onSubmit={this.onSubmit}>
-						<input
-							type="text"
-							value={this.state.text}
-							onChange={this.onChange}
-						/>
-					</form>
-					{filteredTasks.map(task => (
-						<Task key={task.id} task={task} />
-					))}
-				</div>
-				{this.renderListFooter(list, tasks)}
-			</div>
-		);
-	}
-}
 
 export default connect(
 	mapStateToProps,
