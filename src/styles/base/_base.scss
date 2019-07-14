@@ -5,11 +5,11 @@
 body {
 	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 	background: $white-off;
+	box-sizing: border-box;
 }
 
 [class$='-button'] {
 	cursor: pointer;
-	box-shadow: 0 0 2px 3px $gray-shadow;
 	border-radius: 3px;
 	user-select: none;
 }

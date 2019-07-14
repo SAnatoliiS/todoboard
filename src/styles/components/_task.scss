@@ -3,16 +3,27 @@
 	flex-direction: row;
 	justify-content: flex-start;
 	padding: 10px;
-	margin: 5px;
-	border-radius: 10px;
+	margin: 5px 0;
+	border-radius: 5px;
 }
 
 .task-container-in_progress {
 	background-color: $green-off;
+	box-shadow: 0 4px 5px 1px $gray-shadow;
+}
+
+.task-container-in_progress:hover {
+	box-shadow: 0 4px 5px 3px $gray-shadow;
 }
 
 .task-container-done {
 	background-color: $light-violet;
+	box-shadow: 0 4px 5px 1px $gray-shadow-off;
+}
+
+.task-container-done:hover {
+	background-color: $light-violet;
+	box-shadow: 0 4px 5px 3px $gray-shadow-off;
 }
 
 .task-title {

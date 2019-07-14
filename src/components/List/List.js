@@ -76,27 +76,7 @@ class RenderList extends React.PureComponent {
 
 		return (
 			<div className={'list-footer'}>
-				<div className={'list-footer-filter_list'}>
-					<span
-						className={'list-footer-filter_item-button'}
-						onClick={this.pickFilter('all')}
-					>
-						All
-					</span>
-					<span
-						className={'list-footer-filter_item-button'}
-						onClick={this.pickFilter('active')}
-					>
-						Active
-					</span>
-					<span
-						className={'list-footer-filter_item-button'}
-						onClick={this.pickFilter('comleted')}
-					>
-						Completed
-					</span>
-				</div>
-				<div className={'list-footer-bottom_container'}>
+				<div className={'list-footer-top_container'}>
 					<div className={'list-footer-left_items'}>{`${
 						activeTasks.length
 					} items left`}</div>
@@ -108,6 +88,29 @@ class RenderList extends React.PureComponent {
 							Clear completed
 						</div>
 					)}
+				</div>
+				<div className={'list-footer-filter_list'}>
+					<span
+						className={`${this.state.filterValue === 'all' &&
+							'list-footer-filter_item-active-button'} list-footer-filter_item-button`}
+						onClick={this.pickFilter('all')}
+					>
+						All
+					</span>
+					<span
+						className={`${this.state.filterValue === 'active' &&
+							'list-footer-filter_item-active-button'} list-footer-filter_item-button`}
+						onClick={this.pickFilter('active')}
+					>
+						Active
+					</span>
+					<span
+						className={`${this.state.filterValue === 'comleted' &&
+							'list-footer-filter_item-active-button'} list-footer-filter_item-button`}
+						onClick={this.pickFilter('comleted')}
+					>
+						Completed
+					</span>
 				</div>
 			</div>
 		);

@@ -1,34 +1,44 @@
 .list-container {
-	border: 1px solid black;
 	display: flex;
 	flex-direction: column;
 	width: 280px;
 	margin: 0px 20px 20px 0px;
 	position: relative;
+	padding: 10px;
+	box-shadow: 0 3px 5px 2px $gray-shadow;
+}
+
+.list-container:hover {
+	box-shadow: 0 3px 5px 4px $gray-shadow;
 }
 
 .list-header {
-	border-bottom: 1px solid black;
 	height: 40px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+	font-weight: 800;
+	font-size: 20px;
+	text-align: center;
+}
+
+.list-header::after {
+	content: '';
+	position: absolute;
+	left: 10px;
+	right: 10px;
+	top: 50px;
+	height: 1px;
+	border: 1px solid $gray-border;
 }
 
 .list-header--remove-button {
 	position: absolute;
-	right: -3px;
-	top: -3px;
-	border: 1px solid black;
+	right: 0px;
+	top: -2px;
 	height: 20px;
 	width: 20px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-}
-
-div[className$='-button'] {
-	cursor: pointer;
+	font-weight: 100;
 }
 
 .list-header--title {
@@ -42,12 +52,19 @@ div[className$='-button'] {
 }
 
 .list-footer {
+	margin-top: 10px;
 	display: flex;
 	flex-direction: column;
-	border-top: 1px solid black;
 	font-size: 15px;
 	color: $font-gray;
-	padding: 5px;
+}
+
+.list-footer-top_container {
+	height: 20px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	margin-bottom: 10px;
 }
 
 .list-footer-filter_list {
@@ -56,17 +73,28 @@ div[className$='-button'] {
 	justify-content: space-around;
 }
 
-.list-footer-bottom_container {
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-	margin-top: 5px;
-}
-
 .list-footer-filter_item-button {
-	border: 1px solid $gray-border;
+	border: 1px solid $white-off;
 	border-radius: 3px;
 	padding: 0px 4px;
+}
+
+.list-footer-filter_item-button:hover {
+	border: 1px solid $gray-border-off;
+}
+
+.list-footer-filter_item-active-button {
+	border: 1px solid $gray-border !important;
+	cursor: default;
+}
+
+.clear_completed-button {
+	border: 1px solid $white-off;
+	padding: 0 4px;
+}
+
+.clear_completed-button:hover {
+	border: 1px solid $gray-border-off;
 }
 
 .list-form {
@@ -78,12 +106,13 @@ div[className$='-button'] {
 .list-textarea {
 	all: unset;
 	text-justify: center;
-	margin: 5px;
-	border-radius: 10px;
+	margin: 10px 0 5px 0;
+	border-radius: 5px;
 	background-color: white;
 	padding: 10px;
 	font-size: 16px;
 	font-weight: 600;
 	word-wrap: break-word;
 	overflow: hidden;
+	box-shadow: 0 3px 2px 0px $gray-shadow;
 }
