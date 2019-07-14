@@ -36,7 +36,7 @@ class RenderList extends React.PureComponent {
 						onClick={this.onRecycleList(list.id)}
 						className={'list-header--remove-button'}
 					>
-						x
+						✖
 					</div>
 				</div>
 				{this.renderListBody(tasks)}
@@ -117,6 +117,8 @@ class RenderList extends React.PureComponent {
 		const e = { ...event };
 		const text = e.target.value;
 
+		const TEXTAREA_PADDING = 10;
+
 		/** Insert "Enter" */
 		if (e.nativeEvent.inputType === 'insertLineBreak') {
 			if (text.trim().length) {
@@ -133,7 +135,7 @@ class RenderList extends React.PureComponent {
 			},
 			() => {
 				this.setState({
-					textareaHeight: e.target.scrollHeight - 20 // padding*2 === 20
+					textareaHeight: e.target.scrollHeight - TEXTAREA_PADDING * 2
 				});
 			}
 		);

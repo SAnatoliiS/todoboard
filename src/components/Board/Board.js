@@ -15,7 +15,7 @@ function Board({ name, id, moveBoardToRecycle }) {
 	return (
 		<Link className={'board'} to={`/board/${id}`}>
 			<div className={'board-button-close'} onClick={onClickDelete(id)}>
-				X
+				✖
 			</div>
 			<div className={'board-content'}>{name}</div>
 		</Link>
