@@ -5,7 +5,14 @@
 	padding: 10px;
 	margin: 5px;
 	border-radius: 10px;
+}
+
+.task-container-in_progress {
 	background-color: $green-off;
+}
+
+.task-container-done {
+	background-color: $light-violet;
 }
 
 .task-title {
@@ -15,6 +22,10 @@
 	align-items: center;
 	font-weight: 600;
 	margin: 0 10px;
+}
+
+.task-title_done {
+	text-decoration: line-through;
 }
 
 .task-checkbox-button {

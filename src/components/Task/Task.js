@@ -12,33 +12,64 @@ const mapDispatchToProps = dispatch => ({
 	removeTask: (taskId, listId) => dispatch(removeTask(taskId, listId))
 });
 
-function Task({
+const Task = ({
 	task: { text, progress, id, listId },
 	changeTaskProgressStatus,
 	removeTask
-}) {
-	const onClick = id => () => {
-		changeTaskProgressStatus(id);
-	};
-
-	const onRemove = (id, listId) => () => {
-		removeTask(id, listId);
-	};
-
+}) => {
 	return (
-		<div className={'task-container'}>
-			<div className={'task-checkbox-button'} onClick={onClick(id)}>
+		<div
+			className={`task-container ${getTaskContainerColorClassName(progress)}`}
+		>
+			<div
+				className={'task-checkbox-button'}
+				onClick={onClick(id, changeTaskProgressStatus)}
+			>
 				{getTaskProgressIcon(progress)}
 			</div>
-			<div className={'task-title'}>{text}</div>
-			<div className={'task-close-button'} onClick={onRemove(id, listId)}>
-				{' '}
-				x
+			<div className={`task-title ${getTaskTitleTextClassName(progress)}`}>
+				{text}
+			</div>
+			<div
+				className={'task-close-button'}
+				onClick={onRemove(id, listId, removeTask)}
+			>
+				✗
 			</div>
 		</div>
 	);
-}
+};
 
+const getTaskTitleTextClassName = progress => {
+	switch (progress) {
+		case progressStatuses.inProgress:
+			return '';
+		case progressStatuses.done:
+			return 'task-title_done';
+		default:
+			throw new Error(
+				'no such task progress. It might be: "IN_PROGRESS" or "DONE"'
+			);
+	}
+};
+const getTaskContainerColorClassName = progress => {
+	switch (progress) {
+		case progressStatuses.inProgress:
+			return 'task-container-in_progress';
+		case progressStatuses.done:
+			return 'task-container-done';
+		default:
+			throw new Error(
+				'no such task progress. It might be: "IN_PROGRESS" or "DONE"'
+			);
+	}
+};
+const onClick = (id, changeTaskProgressStatus) => () => {
+	changeTaskProgressStatus(id);
+};
+const onRemove = (id, listId, removeTask) => () => {
+	removeTask(id, listId);
+};
 const getTaskProgressIcon = progress => {
 	switch (progress) {
 		case progressStatuses.inProgress:
@@ -47,7 +78,7 @@ const getTaskProgressIcon = progress => {
 			return '✓';
 		default:
 			throw new Error(
-				'no such task status. It might be: "ACTIVE", "RECYCLE" or "DONE"'
+				'no such task progress. It might be: "IN_PROGRESS" or "DONE"'
 			);
 	}
 };
