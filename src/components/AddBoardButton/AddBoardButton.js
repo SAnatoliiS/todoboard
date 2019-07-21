@@ -8,8 +8,8 @@ const mapDispatchToProps = dispatch => ({
 
 const RenderSmallButton = ({ onClick }) => {
 	return (
-		<div className={'board'} onClick={onClick}>
-			Add board
+		<div className={'board small-button-container'} onClick={onClick}>
+			<div className={'small-button-content'}>Add board</div>
 		</div>
 	);
 };

@@ -1,27 +1,39 @@
 .board {
-	border: 1px solid black;
 	margin: 20px;
 	flex: 0 1 300px;
-	min-height: 120px;
+	height: 120px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
 	position: relative;
+	background-color: white;
+	border-radius: 5px;
+	box-shadow: 0 2px 4px 1px $gray-shadow;
+	text-decoration: none;
+	transition: 0.1s linear;
 }
 
-.board-button-close {
-	border: 1px solid red;
+.board:hover {
+	box-shadow: 0 5px 8px 2px $gray-shadow;
+	transform: scale(1.05);
+}
+
+.board-close-button {
 	position: absolute;
-	top: -3px;
-	right: -3px;
+	top: 0px;
+	right: 0px;
 	width: 20px;
 	height: 20px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	font-weight: 100;
 }
 
 .board-content {
 	margin: auto;
+	font-size: 24px;
+	font-weight: bold;
+	color: black;
 }
