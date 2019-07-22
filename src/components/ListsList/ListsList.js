@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { getActiveChildren, findItem } from '../../selectors/selectors';
 import RenderList from '../List/List';
 import AddListButton from '../AddListButton/AddListButton';
@@ -23,7 +24,9 @@ function ListsList({ activeLists, error, board }) {
 	return (
 		<div className={'listsList-container'}>
 			<div className={'listsList-header-container'}>
-				<div className={'listsList-header'}>{board.name}</div>
+				<Link className={'listsList-header'} to="/">
+					{board.name}
+				</Link>
 			</div>
 			<div className={'listsList-body'}>
 				{activeLists.map(list => (
