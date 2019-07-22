@@ -56,9 +56,7 @@ class AddBoardForm extends Component {
 		return (
 			<div className={'board add-board-form-container'}>
 				<div className={'add-board-form-header'}>
-					<div className={'add-board-form-header-content'}>
-						Creating a board
-					</div>
+					<div className={'add-board-form-header-title'}>Creating a board</div>
 					<div
 						className={'add-board-form-collapse-button'}
 						onClick={collapseButton}
@@ -66,17 +64,36 @@ class AddBoardForm extends Component {
 						✖
 					</div>
 				</div>
-				<div>What shall we call the board?</div>
-				<form onSubmit={this.onSubmit} onKeyDown={this.onKeyDown}>
+				<div className={'add-board-form-description'}>
+					What shall we call the board?
+				</div>
+				<form
+					className={'add-board-form'}
+					onSubmit={this.onSubmit}
+					onKeyDown={this.onKeyDown}
+				>
 					<input
+						className={'add-board-form-input'}
 						type="text"
 						value={this.state.name}
 						onChange={this.onChange}
 						placeholder="Your new board's name"
 					/>
 				</form>
-				<button onClick={collapseButton}>Cancel</button>
-				<button onClick={this.onSubmit}>Create</button>
+				<div className={'add-board-form-footer'}>
+					<button
+						className={'add-board-form-cancel-button'}
+						onClick={collapseButton}
+					>
+						CANCEL
+					</button>
+					<button
+						className={'add-board-form-create-button'}
+						onClick={this.onSubmit}
+					>
+						CREATE
+					</button>
+				</div>
 			</div>
 		);
 	}

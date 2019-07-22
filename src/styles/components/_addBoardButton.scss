@@ -1,5 +1,7 @@
 .small-button-container {
 	background-color: $green;
+	cursor: pointer;
+	user-select: none;
 }
 
 .small-button-content {
@@ -7,4 +9,81 @@
 	font-size: 20px;
 	font-weight: bold;
 	text-shadow: 1px 1px 2px black;
+}
+
+.add-board-form-container {
+	background-color: $green;
+	color: white;
+}
+
+.add-board-form-header {
+	width: 100%;
+	padding: 20px 30px;
+	border-bottom: 1px solid white;
+	text-shadow: 1px 1px 2px black;
+}
+
+.add-board-form-header-title {
+	font-weight: bold;
+	font-size: 22px;
+	cursor: default;
+	user-select: none;
+}
+
+.add-board-form-collapse-button {
+	position: absolute;
+	right: 8px;
+	top: 3px;
+}
+
+.add-board-form-description {
+	margin-top: 20px;
+	text-shadow: 1px 1px 2px black;
+	cursor: default;
+	user-select: none;
+}
+
+.add-board-form {
+	padding: 20px 30px 0px 30px;
+	width: 100%;
+	display: flex;
+	justify-content: stretch;
+}
+
+.add-board-form-input {
+	all: unset;
+	padding: 10px;
+	background-color: white;
+	color: black;
+	width: 100%;
+	border-radius: 5px;
+	box-shadow: 0 3px 2px 0px $gray-shadow;
+}
+
+.add-board-form-footer {
+	padding: 20px 40px;
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+}
+
+.add-board-form-cancel-button {
+	height: 40px;
+	width: 60px;
+	font-size: 14px;
+	background-color: transparent;
+	border: unset;
+	color: white;
+	text-shadow: 1px 1px 2px black;
+}
+
+.add-board-form-create-button {
+	height: 40px;
+	width: 100px;
+	font-size: 14px;
+	color: black;
+	border-radius: 5px;
+	border: unset;
+	box-shadow: 0 3px 2px 0px $gray-shadow;
 }
