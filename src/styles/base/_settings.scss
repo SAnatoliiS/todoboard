@@ -13,6 +13,16 @@ $light-violet: #f3ecff;
 // Font Size
 // $font-size-xl: 2.5rem;
 
+/** Shadows */
+$white-text-shadow: 1px 1px 2px black;
+$board-shadow: 0 2px 6px 0px $gray-shadow;
+$board-hover-shadow: 0 5px 8px 2px $gray-shadow;
+$text-box-shadow: 0 3px 2px 0px $gray-shadow;
+$task-in_progress-shadow: 0 4px 5px 1px $gray-shadow;
+$task-in_progress-hover-shadow: 0 4px 5px 3px $gray-shadow;
+$task-done-shadow: 0 4px 5px 1px $gray-shadow-off;
+$task-done-hover-shadow: 0 4px 5px 3px $gray-shadow-off;
+
 $board-width: 300px;
 
 // Spacing

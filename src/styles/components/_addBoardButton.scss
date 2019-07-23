@@ -8,7 +8,7 @@
 	color: white;
 	font-size: 20px;
 	font-weight: bold;
-	text-shadow: 1px 1px 2px black;
+	text-shadow: $white-text-shadow;
 }
 
 .add-board-form-container {
@@ -20,7 +20,7 @@
 	width: 100%;
 	padding: 20px 30px;
 	border-bottom: 1px solid white;
-	text-shadow: 1px 1px 2px black;
+	text-shadow: $white-text-shadow;
 }
 
 .add-board-form-header-title {
@@ -38,7 +38,7 @@
 
 .add-board-form-description {
 	margin-top: 20px;
-	text-shadow: 1px 1px 2px black;
+	text-shadow: $white-text-shadow;
 	cursor: default;
 	user-select: none;
 }
@@ -57,7 +57,7 @@
 	color: black;
 	width: 100%;
 	border-radius: 5px;
-	box-shadow: 0 3px 2px 0px $gray-shadow;
+	box-shadow: $text-box-shadow;
 }
 
 .add-board-form-footer {
@@ -75,7 +75,7 @@
 	background-color: transparent;
 	border: unset;
 	color: white;
-	text-shadow: 1px 1px 2px black;
+	text-shadow: $white-text-shadow;
 }
 
 .add-board-form-create-button {
@@ -85,5 +85,5 @@
 	color: black;
 	border-radius: 5px;
 	border: unset;
-	box-shadow: 0 3px 2px 0px $gray-shadow;
+	box-shadow: $text-box-shadow;
 }

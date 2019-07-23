@@ -9,21 +9,21 @@
 
 .task-container-in_progress {
 	background-color: $green-off;
-	box-shadow: 0 4px 5px 1px $gray-shadow;
+	box-shadow: $task-in_progress-shadow;
 }
 
 .task-container-in_progress:hover {
-	box-shadow: 0 4px 5px 3px $gray-shadow;
+	box-shadow: $task-in_progress-hover-shadow;
 }
 
 .task-container-done {
 	background-color: $light-violet;
-	box-shadow: 0 4px 5px 1px $gray-shadow-off;
+	box-shadow: $task-done-shadow;
 }
 
 .task-container-done:hover {
 	background-color: $light-violet;
-	box-shadow: 0 4px 5px 3px $gray-shadow-off;
+	box-shadow: $task-done-hover-shadow;
 }
 
 .task-title {

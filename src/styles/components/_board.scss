@@ -9,13 +9,13 @@
 	position: relative;
 	background-color: white;
 	border-radius: 5px;
-	box-shadow: 0 2px 6px 0px $gray-shadow;
+	box-shadow: $board-shadow;
 	text-decoration: none;
 	transition: 0.1s linear;
 }
 
 .board:hover {
-	box-shadow: 0 5px 8px 2px $gray-shadow;
+	box-shadow: $board-hover-shadow;
 	transform: scale(1.05);
 }
 
