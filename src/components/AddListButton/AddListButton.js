@@ -7,7 +7,10 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const RenderSmallButton = ({ expandButton }) => (
-	<div onClick={expandButton} className={'list-container-button'}>
+	<div
+		onClick={expandButton}
+		className={'list-container add-list-small-button'}
+	>
 		Add a list...
 	</div>
 );
