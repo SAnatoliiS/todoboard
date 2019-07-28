@@ -1,5 +1,5 @@
 import React from 'react';
-import imgRecycleBin from './recycleBin.jpg';
+import imgRecycleBin from './recycleBin.png';
 import imgRestore from './restore.png';
 import imgDelete from './delete.png';
 import { getRecycleItems } from '../../selectors/selectors';
@@ -44,62 +44,59 @@ class Footer extends React.Component {
 	render() {
 		return (
 			<div className={'footer-container'}>
-				<img
-					src={imgRecycleBin}
-					height={63}
-					width={52}
-					alt="recycle"
-					onClick={this.toggleRecycleBin}
-				/>
+				<div onClick={this.toggleRecycleBin} className={'footer-button'}>
+					<img className={'footer-image'} src={imgRecycleBin} alt="recycle" />
+				</div>
+
 				{this.state.isRecycleBinOpen && (
-					<div>
-						<div>
-							{this.props.recycleBoards.map(board => (
-								<div key={board.id}>
-									<div>
-										{board.name}
-										<img
-											src={imgRestore}
-											height={20}
-											width={20}
-											alt="restore"
-											onClick={this.onRestoreBoard(board.id)}
-										/>
-										<img
-											src={imgDelete}
-											height={20}
-											width={20}
-											alt="remove"
-											onClick={this.onRemoveBoard(board.id)}
-										/>
-									</div>
-								</div>
-							))}
-						</div>
-						<div>
-							{this.props.recycleLists.map(list => (
-								<div key={list.id}>
-									<div>
-										{list.name}
-										<img
-											src={imgRestore}
-											height={20}
-											width={20}
-											alt="restore"
-											onClick={this.onRestoreList(list.id)}
-										/>
-										<img
-											src={imgDelete}
-											height={20}
-											width={20}
-											alt="remove"
-											onClick={this.onRemoveList(list.id)}
-										/>
-									</div>
-								</div>
-							))}
-						</div>
+					// <div>
+					<div className={'footer-recycle-list'}>
+						{this.props.recycleBoards.map(board => (
+							<div key={board.id} className={'footer-recycle-board'}>
+								<img
+									className={'footer-recycle-restore-button'}
+									src={imgRestore}
+									height={20}
+									width={20}
+									alt="restore"
+									onClick={this.onRestoreBoard(board.id)}
+								/>
+								<div className={'footer-recycle-board-name'}>{board.name}</div>
+								<img
+									className={'footer-recycle-delete-button'}
+									src={imgDelete}
+									height={20}
+									width={20}
+									alt="remove"
+									onClick={this.onRemoveBoard(board.id)}
+								/>
+							</div>
+						))}
 					</div>
+					// 	<div>
+					// 		{this.props.recycleLists.map(list => (
+					// 			<div key={list.id}>
+					// 				<div>
+					// 					{list.name}
+					// 					<img
+					// 						src={imgRestore}
+					// 						height={20}
+					// 						width={20}
+					// 						alt="restore"
+					// 						onClick={this.onRestoreList(list.id)}
+					// 					/>
+					// 					<img
+					// 						src={imgDelete}
+					// 						height={20}
+					// 						width={20}
+					// 						alt="remove"
+					// 						onClick={this.onRemoveList(list.id)}
+					// 					/>
+					// 				</div>
+					// 			</div>
+					// 		))}
+					// 	</div>
+					// </div>
 				)}
 			</div>
 		);
