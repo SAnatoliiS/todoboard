@@ -1,7 +1,9 @@
 .app-container {
+	height: 100vh;
 	display: flex;
 	flex-direction: column;
 }
-.app-switch {
-	flex: 1 1;
+
+.app-body {
+	flex: 1;
 }

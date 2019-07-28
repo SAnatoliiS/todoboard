@@ -8,9 +8,9 @@ import Router from './routers/AppRouter';
 
 const store = configureStore();
 const app = (
-  <Provider store={store}>
-    <Router />
-  </Provider>
+	<Provider store={store}>
+		<Router />
+	</Provider>
 );
 
 ReactDOM.render(app, document.getElementById('root'));

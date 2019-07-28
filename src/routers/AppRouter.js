@@ -10,17 +10,21 @@ import ListsList from '../components/ListsList/ListsList';
 export const history = createHistory();
 
 const AppRouter = () => (
-	<Router history={history}>
-		<div className={'app-container'}>
-			<Header className={'app-header'} />
-			<Switch className={'app-switch'}>
-				<Route path="/" exact component={BoardsList} />
-				<Route path="/board/:id" component={ListsList} />
-				<Route component={NotFoundPage} />
-			</Switch>
-			<Footer className={'app-footer'} />
-		</div>
-	</Router>
+	<div className={'app-router-container'}>
+		<Router history={history}>
+			<div className={'app-container'}>
+				<Header className={'app-header'} />
+				<div className={'app-body'}>
+					<Switch>
+						<Route path="/" exact component={BoardsList} />
+						<Route path="/board/:id" component={ListsList} />
+						<Route component={NotFoundPage} />
+					</Switch>
+				</div>
+				<Footer className={'app-footer'} />
+			</div>
+		</Router>
+	</div>
 );
 
 export default AppRouter;
