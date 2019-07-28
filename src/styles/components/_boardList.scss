@@ -1,9 +1,10 @@
 .board_list-container {
 	display: flex;
-	flex: auto;
+	height: 100%;
 	flex-direction: row;
 	justify-content: flex-start;
 	padding: 10px 10px;
-	align-items: flex-start;
+	align-content: flex-start;
 	flex-wrap: wrap;
+	overflow: auto;
 }

@@ -1,5 +1,6 @@
 .board {
 	margin: 10px;
+	align-self: flex-start;
 	flex: 0 1 $board-width;
 	min-height: 120px;
 	display: flex;

@@ -42,14 +42,16 @@ class Footer extends React.Component {
 		this.props.removeList(listid);
 	};
 	render() {
+		const footerContainerClassName = [
+			'footer-container',
+			!this.state.isRecycleBinOpen && 'footer-container-hidden'
+		].join(' ');
 		return (
-			<div className={'footer-container'}>
+			<div className={footerContainerClassName}>
 				<div onClick={this.toggleRecycleBin} className={'footer-button'}>
 					<img className={'footer-image'} src={imgRecycleBin} alt="recycle" />
 				</div>
-
-				{this.state.isRecycleBinOpen && (
-					// <div>
+				<div className={'footer-recycle-list-container'}>
 					<div className={'footer-recycle-list'}>
 						{this.props.recycleBoards.map(board => (
 							<div key={board.id} className={'footer-recycle-board'}>
@@ -73,31 +75,30 @@ class Footer extends React.Component {
 							</div>
 						))}
 					</div>
-					// 	<div>
-					// 		{this.props.recycleLists.map(list => (
-					// 			<div key={list.id}>
-					// 				<div>
-					// 					{list.name}
-					// 					<img
-					// 						src={imgRestore}
-					// 						height={20}
-					// 						width={20}
-					// 						alt="restore"
-					// 						onClick={this.onRestoreList(list.id)}
-					// 					/>
-					// 					<img
-					// 						src={imgDelete}
-					// 						height={20}
-					// 						width={20}
-					// 						alt="remove"
-					// 						onClick={this.onRemoveList(list.id)}
-					// 					/>
-					// 				</div>
-					// 			</div>
-					// 		))}
-					// 	</div>
-					// </div>
-				)}
+					<div>
+						{this.props.recycleLists.map(list => (
+							<div key={list.id}>
+								<div>
+									{list.name}
+									<img
+										src={imgRestore}
+										height={20}
+										width={20}
+										alt="restore"
+										onClick={this.onRestoreList(list.id)}
+									/>
+									<img
+										src={imgDelete}
+										height={20}
+										width={20}
+										alt="remove"
+										onClick={this.onRemoveList(list.id)}
+									/>
+								</div>
+							</div>
+						))}
+					</div>
+				</div>
 			</div>
 		);
 	}

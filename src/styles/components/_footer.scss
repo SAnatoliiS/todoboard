@@ -1,14 +1,23 @@
 .footer-container {
-	flex: 0 1 150px;
+	max-height: 30vh;
 	display: flex;
 	flex-direction: row;
-	align-items: flex-start;
-	padding-left: 20px;
+	align-items: flex-end;
+	padding-right: 135px;
+	overflow: hidden;
+	transition: max-height 0.7s ease-out;
+}
+
+.footer-container-hidden {
+	max-height: 0;
 }
 
 .footer-button {
 	height: 100px;
 	width: 100px;
+	position: fixed;
+	right: 20px;
+	bottom: 20px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -39,7 +48,7 @@
 	background-color: $green;
 	box-shadow: $board-shadow;
 	transition: 0.1s linear;
-	margin: 0 10px 10px 0;
+	margin: 5px 5px 5px 5px;
 	cursor: default;
 }
 
@@ -55,6 +64,15 @@
 	color: white;
 	text-shadow: $white-text-shadow;
 	word-break: break-all;
+}
+
+.footer-recycle-list-container {
+	height: 100%;
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+	overflow: auto;
 }
 
 .footer-recycle-list {
