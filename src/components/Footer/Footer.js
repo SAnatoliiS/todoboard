@@ -100,7 +100,10 @@ const renderBoardListRecycleList = (
 		<div className={'footer-recycle-list-container'}>
 			<div className={'footer-recycle-list'}>
 				{recycleBoards.map(board => (
-					<div key={board.id} className={'footer-recycle-board'}>
+					<div
+						key={board.id}
+						className={'footer-recycle-item footer-recycle-item--board'}
+					>
 						<img
 							className={'footer-recycle-restore-button'}
 							src={imgRestore}
@@ -109,7 +112,7 @@ const renderBoardListRecycleList = (
 							alt="restore"
 							onClick={onRestoreBoard(board.id)}
 						/>
-						<div className={'footer-recycle-board-name'}>{board.name}</div>
+						<div className={'footer-recycle-item-name'}>{board.name}</div>
 						<img
 							className={'footer-recycle-delete-button'}
 							src={imgDelete}
@@ -134,7 +137,10 @@ const renderListsListRecycleList = (
 		<div className={'footer-recycle-list-container'}>
 			<div className={'footer-recycle-list'}>
 				{recycleLists.map(list => (
-					<div key={list.id} className={'footer-recycle-board'}>
+					<div
+						key={list.id}
+						className={'footer-recycle-item footer-recycle-item--list'}
+					>
 						<img
 							className={'footer-recycle-restore-button'}
 							src={imgRestore}
@@ -143,7 +149,7 @@ const renderListsListRecycleList = (
 							alt="restore"
 							onClick={onRestoreList(list.id)}
 						/>
-						<div className={'footer-recycle-board-name'}>{list.name}</div>
+						<div className={'footer-recycle-item-name'}>{list.name}</div>
 						<img
 							className={'footer-recycle-delete-button'}
 							src={imgDelete}

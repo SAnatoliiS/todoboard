@@ -38,7 +38,7 @@
 	transform: scale(0.45);
 }
 
-.footer-recycle-board {
+.footer-recycle-item {
 	min-width: 150px;
 	height: 50px;
 	display: flex;
@@ -46,25 +46,39 @@
 	align-items: center;
 	border-radius: 5px;
 	padding: 0 10px 0 10px;
-	background-color: $green;
 	box-shadow: $board-shadow;
 	transition: 0.1s linear;
 	margin: 5px 5px 5px 5px;
 	cursor: default;
 }
 
-.footer-recycle-board:hover {
+.footer-recycle-item--board {
+	background-color: $green;
+}
+
+.footer-recycle-item--list {
+	background-color: white;
+}
+
+.footer-recycle-item:hover {
 	box-shadow: $board-hover-shadow;
 	transform: scale(1.05);
 	transform: rotate(1deg);
 }
 
-.footer-recycle-board-name {
+.footer-recycle-item-name {
 	flex: 1;
 	margin: 0 10px 0 10px;
+	word-break: break-all;
+}
+
+.footer-recycle-item-name--board {
 	color: white;
 	text-shadow: $white-text-shadow;
-	word-break: break-all;
+}
+
+.footer-recycle-item-name--list {
+	color: black;
 }
 
 .footer-recycle-list-container {
