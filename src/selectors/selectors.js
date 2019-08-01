@@ -10,6 +10,7 @@ import { statuses } from '../config';
  * @return {Array} Массив сущностей выбранного типа
  */
 export const getItems = type => state => state[type];
+export const getState = state => state;
 
 /**
  * Возвращает селектор, который возвращает список сущностей со статусом active выбранного типа
@@ -25,18 +26,51 @@ export const getActiveItems = type =>
 		items => items.filter(item => item.status === statuses[type].active)
 	);
 
+export const getRecycleInstanceType = () =>
+	createSelector(
+		getState,
+		state => {
+			const path = state.router.location.pathname;
+			if (path === '/') {
+				return { type: 'boards', boardId: null };
+			}
+			if (path.startsWith('/board/')) {
+				const boardId = Number(path.slice(7));
+				return { type: 'lists', boardId };
+			}
+			console.log(
+				`selectors: getRecycleInstanceType: Not supported path - ${path}`
+			);
+			return { type: null, boardId: null };
+		}
+	);
+
 /**
  * Возвращает селектор, который возвращает список сущностей со статусом recycle выбранного типа
- * @param {"boards" | "lists"} type Тип искомых сущностей
+ * @param instanceType Тип искомых сущностей
  * @return {Function} selector - функция, которая принимает Redux state,
  * возвращает список сущностей со статусом recycle выбранного типа из Redux state
  * @param {Redux.state} state Redux state
  * @return {Array} Массив сущностей со статусом recycle выбранного типа
  */
-export const getRecycleItems = type =>
+export const getRecycleItems = () =>
 	createSelector(
-		getItems(type),
-		items => items.filter(item => item.status === statuses[type].recycle)
+		getItems('boards'),
+		getItems('lists'),
+		getRecycleInstanceType(),
+		(boards, lists, instanceType) => {
+			if (instanceType.type === 'boards') {
+				return boards.filter(board => board.status === statuses.boards.recycle);
+			}
+			if (instanceType.type === 'lists') {
+				return lists.filter(
+					list =>
+						list.status === statuses.lists.recycle &&
+						Number(list.boardId) === instanceType.boardId
+				);
+			}
+			return [];
+		}
 	);
 
 /**

@@ -1,16 +1,15 @@
 import React from 'react';
-import { Router, Route, Switch } from 'react-router-dom';
-import createHistory from 'history/createBrowserHistory';
+import { Route, Switch } from 'react-router-dom';
+import { ConnectedRouter } from 'connected-react-router';
+import { history } from '../store/configureStore';
 import BoardsList from '../components/BoardsList/BoardsList';
 import NotFoundPage from '../components/NotFoundPage/NotFoundPage';
 import Header from '../components/Header/Header';
 import Footer from '../components/Footer/Footer';
 import ListsList from '../components/ListsList/ListsList';
 
-export const history = createHistory();
-
 const AppRouter = () => (
-	<Router history={history}>
+	<ConnectedRouter history={history}>
 		<div className={'app-container'}>
 			<Header />
 			<div className={'app-body'}>
@@ -22,7 +21,7 @@ const AppRouter = () => (
 			</div>
 			<Footer />
 		</div>
-	</Router>
+	</ConnectedRouter>
 );
 
 export default AppRouter;
