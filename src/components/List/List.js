@@ -1,4 +1,5 @@
 import React from 'react';
+import { Droppable } from 'react-beautiful-dnd';
 import Task from '../Task/Task';
 import { getChildren } from '../../selectors/selectors';
 import { connect } from 'react-redux';
@@ -39,7 +40,7 @@ class RenderList extends React.PureComponent {
 						✖
 					</div>
 				</div>
-				{this.renderListBody(tasks)}
+				{this.renderListBody(tasks, list.id)}
 				{this.renderListFooter(list, tasks)}
 			</div>
 		);
@@ -159,15 +160,22 @@ class RenderList extends React.PureComponent {
 		);
 	};
 
-	renderListBody = tasks => {
+	renderListBody = (tasks, listId) => {
 		const filteredTasks = filterTasks(this.state.filterValue, tasks);
 
 		return (
 			<div className={'list-body'}>
 				{this.renderTextField()}
-				{filteredTasks.map(task => (
-					<Task key={task.id} task={task} />
-				))}
+				<Droppable droppableId={listId}>
+					{provided => (
+						<div ref={provided.innerRef} {...provided.droppableProps}>
+							{filteredTasks.map((task, index) => (
+								<Task key={task.id} task={task} index={index} />
+							))}
+							{provided.placeholder}
+						</div>
+					)}
+				</Droppable>
 			</div>
 		);
 	};

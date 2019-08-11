@@ -1,4 +1,5 @@
 import React from 'react';
+import { Draggable } from 'react-beautiful-dnd';
 import { progressStatuses } from '../../config';
 import {
 	changeTaskProgressStatus,
@@ -15,28 +16,38 @@ const mapDispatchToProps = dispatch => ({
 const Task = ({
 	task: { text, progress, id, listId },
 	changeTaskProgressStatus,
-	removeTask
+	removeTask,
+	index
 }) => {
 	return (
-		<div
-			className={`task-container ${getTaskContainerColorClassName(progress)}`}
-		>
-			<div
-				className={'task-checkbox-button'}
-				onClick={onClick(id, changeTaskProgressStatus)}
-			>
-				{getTaskProgressIcon(progress)}
-			</div>
-			<div className={`task-title ${getTaskTitleTextClassName(progress)}`}>
-				{text}
-			</div>
-			<div
-				className={'task-close-button'}
-				onClick={onRemove(id, listId, removeTask)}
-			>
-				✗
-			</div>
-		</div>
+		<Draggable draggableId={id} index={index}>
+			{provided => (
+				<div
+					className={`task-container ${getTaskContainerColorClassName(
+						progress
+					)}`}
+					{...provided.draggableProps}
+					{...provided.dragHandleProps}
+					ref={provided.innerRef}
+				>
+					<div
+						className={'task-checkbox-button'}
+						onClick={onClick(id, changeTaskProgressStatus)}
+					>
+						{getTaskProgressIcon(progress)}
+					</div>
+					<div className={`task-title ${getTaskTitleTextClassName(progress)}`}>
+						{text}
+					</div>
+					<div
+						className={'task-close-button'}
+						onClick={onRemove(id, listId, removeTask)}
+					>
+						✗
+					</div>
+				</div>
+			)}
+		</Draggable>
 	);
 };
 
