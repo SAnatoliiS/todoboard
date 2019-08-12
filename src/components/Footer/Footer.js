@@ -19,9 +19,9 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
 	restoreBoard: boardId => dispatch(restoreBoard(boardId)),
-	restoreList: boardId => dispatch(restoreList(boardId)),
+	restoreList: listId => dispatch(restoreList(listId)),
 	removeBoard: boardId => dispatch(removeBoardTree(boardId)),
-	removeList: boardId => dispatch(removeListTree(boardId))
+	removeList: listId => dispatch(removeListTree(listId))
 });
 
 class Footer extends React.Component {

@@ -6,7 +6,8 @@ import {
 	cutItem,
 	changeItemStatus,
 	addItemToParentList,
-	cutChild
+	cutChild,
+	replaceChild
 } from '../utils/stateManipulations';
 
 const defaultState = [
@@ -53,7 +54,7 @@ export default handleActions(
 		},
 		// ADD_TASK reducer
 		[tasksActions.addTask](state, { payload: task }) {
-			return addItemToParentList(state, 'task', task.listId, task.id);
+			return addItemToParentList(state, 'task', task.listId, task.id, null);
 		},
 		// REMOVE_TASK reducer
 		[tasksActions.removeTask](
@@ -63,6 +64,11 @@ export default handleActions(
 			}
 		) {
 			return cutChild(state, 'task', taskId);
+		},
+		// REPLACE_TASK reducer
+		[tasksActions.replaceTask](state, { payload }) {
+			const { taskId, newListId, newIndex } = payload;
+			return replaceChild(state, 'task', taskId, newListId, newIndex);
 		}
 	},
 	defaultState

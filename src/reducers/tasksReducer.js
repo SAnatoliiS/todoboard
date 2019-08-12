@@ -44,6 +44,15 @@ export default handleActions(
 		// CHANGE_TASK_PROGRESS_STATUS reducer
 		[tasksActions.changeTaskProgressStatus](state, { payload: taskId }) {
 			return changeItemProgressStatus(state, taskId);
+		},
+		// REPLACE_TASK reducer
+		[tasksActions.replaceTask](state, { payload }) {
+			return state.map(task => {
+				if (task.id === payload.taskId) {
+					return { ...task, listId: payload.newListId };
+				}
+				return task;
+			});
 		}
 	},
 	defaultState

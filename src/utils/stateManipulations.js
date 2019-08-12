@@ -33,10 +33,27 @@ export const getNameField = type => {
 	}
 };
 
-export const addItemToParentList = (state, type, parentItemId, targetId) => {
+const getNewField = (childIdList, targetId, targetIndex) => {
+	if (targetIndex === null) {
+		return [...childIdList, targetId];
+	}
+	return [
+		...childIdList.slice(0, targetIndex),
+		targetId,
+		...childIdList.slice(targetIndex, childIdList.length)
+	];
+};
+
+export const addItemToParentList = (
+	state,
+	type,
+	parentItemId,
+	targetId,
+	targetIndex
+) => {
 	const parentItem = findItem(state, parentItemId);
 	const nameField = getNameField(type);
-	const newField = [...parentItem[nameField], targetId];
+	const newField = getNewField(parentItem[nameField], targetId, targetIndex);
 	const updatedParentItem = { ...parentItem, [nameField]: newField };
 	return replaceItem(state, updatedParentItem);
 };
@@ -73,4 +90,21 @@ export const cutChild = (state, childType, childId) => {
 	);
 	const updatedParent = { ...parent, [nameChildrenField]: updatedChildren };
 	return replaceItem(state, updatedParent);
+};
+
+export const replaceChild = (
+	state,
+	childType,
+	childId,
+	newParentId,
+	newIndexOfChild
+) => {
+	const stateWithoutOldChild = cutChild(state, childType, childId);
+	return addItemToParentList(
+		stateWithoutOldChild,
+		childType,
+		newParentId,
+		childId,
+		newIndexOfChild
+	);
 };
