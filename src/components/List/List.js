@@ -164,23 +164,23 @@ class RenderList extends React.PureComponent {
 		const filteredTasks = filterTasks(this.state.filterValue, tasks);
 
 		return (
-			<Droppable droppableId={listId}>
-				{provided => (
-					<div
-						ref={provided.innerRef}
-						{...provided.droppableProps}
-						className={'list-body'}
-					>
-						{this.renderTextField()}
-						<div>
+			<div className={'list-body'}>
+				{this.renderTextField()}
+				<Droppable droppableId={listId}>
+					{provided => (
+						<div
+							ref={provided.innerRef}
+							{...provided.droppableProps}
+							className={'task-list'}
+						>
 							{filteredTasks.map((task, index) => (
 								<Task key={task.id} task={task} index={index} />
 							))}
 							{provided.placeholder}
 						</div>
-					</div>
-				)}
-			</Droppable>
+					)}
+				</Droppable>
+			</div>
 		);
 	};
 }
