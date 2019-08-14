@@ -54,3 +54,20 @@
 	justify-content: center;
 	align-items: center;
 }
+
+@media (max-width: $desktop-breakpoint) {
+	.task-container {
+		padding: 5px;
+	}
+	.task-title {
+		font-size: 12px;
+	}
+	.task-close-button {
+		width: 12px;
+		font-size: 12px;
+	}
+	.task-checkbox-button {
+		width: 12px;
+		font-size: 12px;
+	}
+}

@@ -63,7 +63,6 @@
 }
 
 .list-footer-top_container {
-	height: 20px;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
@@ -94,6 +93,7 @@
 .clear_completed-button {
 	border: 1px solid $white-off;
 	padding: 0 4px;
+	text-align: center;
 }
 
 .clear_completed-button:hover {
@@ -129,4 +129,35 @@
 	align-items: center;
 	background-color: $green-off;
 	transition: background-color 0.2s linear;
+}
+
+@media (max-width: $desktop-breakpoint) {
+	.list-textarea {
+		padding: 5px;
+		font-size: 12px;
+	}
+	.list-header {
+		font-size: 16px;
+		height: 20px;
+	}
+	.list-header--remove-button {
+		font-size: 16px;
+	}
+	.list-header::after {
+		top: 35px;
+	}
+	.list-footer {
+		margin-top: 5px;
+		font-size: 11px;
+	}
+	.list-footer-top_container {
+		margin-bottom: 5px;
+	}
+	.clear_completed-button {
+		width: 60px;
+	}
+	.list-placeholder {
+		padding: 5px;
+		font-size: 12px;
+	}
 }

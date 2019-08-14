@@ -33,10 +33,17 @@
 }
 
 .listsList-body {
-	padding: 20px 0px 20px 5px;
+	padding: 20px 5px;
 	display: flex;
 	flex-direction: row;
 	justify-content: flex-start;
 	align-items: flex-start;
 	overflow: auto;
+}
+
+@media (max-width: $desktop-breakpoint) {
+	.listsList-header {
+		font-size: 20px;
+		padding: 10px 0px;
+	}
 }

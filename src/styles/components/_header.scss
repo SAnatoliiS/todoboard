@@ -7,3 +7,9 @@
 	background-size: 80px;
 	background-position: 50%;
 }
+
+@media (max-width: $desktop-breakpoint) {
+	.header {
+		display: none;
+	}
+}

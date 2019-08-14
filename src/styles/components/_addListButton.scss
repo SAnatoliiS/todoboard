@@ -34,3 +34,13 @@
 	flex-direction: column;
 	align-items: stretch;
 }
+
+@media (max-width: $desktop-breakpoint) {
+	.add-list-small-button {
+		font-size: 12px;
+	}
+	.add-list-form-input {
+		font-size: 12px;
+		padding: 5px;
+	}
+}

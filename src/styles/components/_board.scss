@@ -35,7 +35,14 @@
 
 .board-content {
 	margin: auto;
+	padding: 0px 40px;
 	font-size: 24px;
 	font-weight: bold;
 	color: black;
+}
+
+@media (max-width: $desktop-breakpoint) {
+	.board {
+		min-height: 80px;
+	}
 }

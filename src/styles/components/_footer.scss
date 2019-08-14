@@ -106,3 +106,14 @@
 .footer-recycle-delete-button {
 	transform: scale(0.8);
 }
+
+@media (max-width: $desktop-breakpoint) {
+	.footer-button {
+		height: 70px;
+		width: 70px;
+		border-radius: 70px;
+	}
+	.footer-container {
+		padding-right: 100px;
+	}
+}
