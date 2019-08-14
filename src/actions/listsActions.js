@@ -4,7 +4,7 @@ import { statuses } from '../config';
 
 // ADD_LIST
 export const addList = createAction('ADD_LIST', (name, boardId) => ({
-	id: uuid(),
+	id: `list-${uuid()}`,
 	name,
 	boardId,
 	status: statuses.lists.active,

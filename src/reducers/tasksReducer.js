@@ -4,23 +4,23 @@ import { cutItem, changeItemProgressStatus } from '../utils/stateManipulations';
 
 const defaultState = [
 	{
-		id: '1',
+		id: 'task-1',
 		text: 'Board',
-		listId: '1',
+		listId: 'list-1',
 		status: 'ACTIVE',
 		progress: 'IN_PROGRESS'
 	},
 	{
-		id: '2',
+		id: 'task-2',
 		text: 'Fixators',
-		listId: '1',
+		listId: 'list-1',
 		status: 'ACTIVE',
 		progress: 'DONE'
 	},
 	{
-		id: '3',
+		id: 'task-3',
 		text: 'Gloves',
-		listId: '2',
+		listId: 'list-2',
 		status: 'ACTIVE',
 		progress: 'IN_PROGRESS'
 	}

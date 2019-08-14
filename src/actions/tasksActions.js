@@ -4,7 +4,7 @@ import { progressStatuses } from '../config';
 
 // ADD_TASK
 export const addTask = createAction('ADD_TASK', (text, listId) => ({
-	id: uuid(),
+	id: `task-${uuid()}`,
 	text,
 	listId,
 	progress: progressStatuses.inProgress

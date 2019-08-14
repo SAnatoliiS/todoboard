@@ -4,7 +4,7 @@ import { statuses } from '../config';
 
 // ADD_BOARD
 export const addBoard = createAction('ADD_BOARD', name => ({
-	id: uuid(),
+	id: `board-${uuid()}`,
 	name,
 	status: statuses.boards.active,
 	listsInBoard: []

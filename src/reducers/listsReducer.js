@@ -12,23 +12,23 @@ import {
 
 const defaultState = [
 	{
-		id: '1',
+		id: 'list-1',
 		name: 'Snowboard',
-		boardId: '1',
+		boardId: 'board-1',
 		status: 'ACTIVE',
-		tasksInList: ['1', '2']
+		tasksInList: ['task-1', 'task-2']
 	},
 	{
-		id: '2',
+		id: 'list-2',
 		name: 'Footbal',
-		boardId: '1',
+		boardId: 'board-1',
 		status: 'ACTIVE',
-		tasksInList: ['3']
+		tasksInList: ['task-3']
 	},
 	{
-		id: '3',
+		id: 'list-3',
 		name: 'Go to shop',
-		boardId: '3',
+		boardId: 'board-3',
 		status: 'ACTIVE',
 		tasksInList: []
 	}

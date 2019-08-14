@@ -11,22 +11,22 @@ import {
 
 const defaultState = [
 	{
-		id: '1',
+		id: 'board-1',
 		name: 'Sports',
 		status: 'ACTIVE',
-		listsInBoard: ['1', '2']
+		listsInBoard: ['list-1', 'list-2']
 	},
 	{
-		id: '2',
+		id: 'board-2',
 		name: 'Hobbies',
 		status: 'ACTIVE',
 		listsInBoard: []
 	},
 	{
-		id: '3',
+		id: 'board-3',
 		name: 'Plans',
 		status: 'ACTIVE',
-		listsInBoard: ['3']
+		listsInBoard: ['list-3']
 	}
 ];
 
