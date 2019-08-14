@@ -50,7 +50,7 @@ export default handleActions(
 		},
 		// ADD_LIST reducer
 		[listsActions.addList](state, { payload: list }) {
-			return addItemToParentList(state, 'list', list.boardId, list.id);
+			return addItemToParentList(state, 'list', list.boardId, list.id, null);
 		},
 		// REMOVE_LIST reducer
 		[listsActions.removeList](state, { payload: listId }) {
