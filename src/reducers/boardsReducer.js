@@ -6,7 +6,8 @@ import {
 	cutItem,
 	changeItemStatus,
 	addItemToParentList,
-	cutChild
+	cutChild,
+	replaceChild
 } from '../utils/stateManipulations';
 
 const defaultState = [
@@ -55,6 +56,11 @@ export default handleActions(
 		// REMOVE_LIST reducer
 		[listsActions.removeList](state, { payload: listId }) {
 			return cutChild(state, 'list', listId);
+		},
+		// REPLACE_LIST reducer
+		[listsActions.replaceList](state, { payload }) {
+			const { listId, newIndex } = payload;
+			return replaceChild(state, 'list', listId, null, newIndex);
 		}
 	},
 	defaultState

@@ -99,11 +99,14 @@ export const replaceChild = (
 	newParentId,
 	newIndexOfChild
 ) => {
+	const parentId = newParentId
+		? newParentId
+		: findParent(state, childType, childId).id;
 	const stateWithoutOldChild = cutChild(state, childType, childId);
 	return addItemToParentList(
 		stateWithoutOldChild,
 		childType,
-		newParentId,
+		parentId,
 		childId,
 		newIndexOfChild
 	);

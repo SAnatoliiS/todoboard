@@ -1,8 +1,7 @@
 .list-container {
 	display: flex;
 	flex-direction: column;
-	flex: 0 1 $board-width;
-	// min-width: $board-width;
+	flex: 0 0 $board-width;
 	margin: 0px 20px 20px 0px;
 	position: relative;
 	padding: 10px;
@@ -106,10 +105,6 @@
 	overflow: hidden;
 }
 
-.task-list {
-	min-height: 30px;
-}
-
 .list-textarea {
 	all: unset;
 	text-justify: center;
@@ -122,4 +117,15 @@
 	word-wrap: break-word;
 	overflow: hidden;
 	box-shadow: $text-box-shadow;
+}
+
+.list-placeholder {
+	border: 1px dashed $gray-border;
+	border-radius: 5px;
+	color: $font-gray;
+	padding: 10px;
+	display: flex;
+	align-items: center;
+	background-color: $green-off;
+	transition: background-color 0.2s linear;
 }

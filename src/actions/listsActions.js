@@ -19,3 +19,9 @@ export const removeList = createAction('REMOVE_LIST');
 
 // RESTORE_LIST
 export const restoreList = createAction('RESTORE_LIST');
+
+// REPLACE_LIST
+export const replaceList = createAction('REPLACE_LIST', (listId, newIndex) => ({
+	listId,
+	newIndex
+}));

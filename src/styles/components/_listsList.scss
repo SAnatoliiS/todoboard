@@ -2,7 +2,7 @@
 	flex: 1;
 	display: flex;
 	flex-direction: column;
-	padding: 20px 0 0 20px;
+	padding: 20px 0 0 15px;
 }
 
 .listsList-header-container {
@@ -18,7 +18,7 @@
 	background-color: $green;
 	text-shadow: $white-text-shadow;
 	padding: 25px 0px;
-	margin-right: 20px;
+	margin: 0px 20px 0px 5px;
 	flex: 0 1 $board-width;
 	text-align: center;
 	box-shadow: $board-shadow;
@@ -33,10 +33,10 @@
 }
 
 .listsList-body {
-	padding: 20px 0px;
+	padding: 20px 0px 20px 5px;
 	display: flex;
 	flex-direction: row;
-	flex-wrap: wrap;
 	justify-content: flex-start;
 	align-items: flex-start;
+	overflow: auto;
 }

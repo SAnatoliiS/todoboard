@@ -1,5 +1,5 @@
 import React from 'react';
-import { Droppable } from 'react-beautiful-dnd';
+import { Droppable, Draggable } from 'react-beautiful-dnd';
 import Task from '../Task/Task';
 import { getChildren } from '../../selectors/selectors';
 import { connect } from 'react-redux';
@@ -29,20 +29,33 @@ class RenderList extends React.PureComponent {
 		const { list, tasks } = this.props;
 
 		return (
-			<div className={'list-container'}>
-				<div className={'list-header'}>
-					<div className={'list-header--title'}>{list.name}</div>
-
+			<Draggable draggableId={this.props.list.id} index={this.props.index}>
+				{provided => (
 					<div
-						onClick={this.onRecycleList(list.id)}
-						className={'list-header--remove-button'}
+						{...provided.draggableProps}
+						ref={provided.innerRef}
+						className={'list-container'}
 					>
-						✖
+						<div className={'list-header'}>
+							<div
+								{...provided.dragHandleProps}
+								className={'list-header--title'}
+							>
+								{list.name}
+							</div>
+
+							<div
+								onClick={this.onRecycleList(list.id)}
+								className={'list-header--remove-button'}
+							>
+								✖
+							</div>
+						</div>
+						{this.renderListBody(tasks, list.id)}
+						{this.renderListFooter(list, tasks)}
 					</div>
-				</div>
-				{this.renderListBody(tasks, list.id)}
-				{this.renderListFooter(list, tasks)}
-			</div>
+				)}
+			</Draggable>
 		);
 	}
 
@@ -166,17 +179,18 @@ class RenderList extends React.PureComponent {
 		return (
 			<div className={'list-body'}>
 				{this.renderTextField()}
-				<Droppable droppableId={listId}>
-					{provided => (
+				<Droppable droppableId={listId} type={'task'}>
+					{(provided, snapshot) => (
 						<div
 							ref={provided.innerRef}
 							{...provided.droppableProps}
 							className={'task-list'}
 						>
+							{renderTaskListPlaceholder(tasks.length, snapshot.isDraggingOver)}
 							{filteredTasks.map((task, index) => (
 								<Task key={task.id} task={task} index={index} />
 							))}
-							{provided.placeholder}
+							{tasks.length !== 0 ? provided.placeholder : null}
 						</div>
 					)}
 				</Droppable>
@@ -184,6 +198,20 @@ class RenderList extends React.PureComponent {
 		);
 	};
 }
+
+const renderTaskListPlaceholder = (tasksLength, isDraggingOver) => {
+	if (tasksLength === 0) {
+		return (
+			<div
+				className={'list-placeholder'}
+				style={{ backgroundColor: !isDraggingOver && 'transparent' }}
+			>
+				{'Or drop the task here...'}
+			</div>
+		);
+	}
+	return null;
+};
 
 const filterTasks = (filterValue, tasks) => {
 	switch (filterValue) {
