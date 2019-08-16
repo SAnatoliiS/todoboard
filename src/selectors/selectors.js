@@ -35,7 +35,7 @@ export const getRecycleInstanceType = () =>
 				return { type: 'boards', boardId: null };
 			}
 			if (path.startsWith('/board/')) {
-				const boardId = Number(path.slice(7));
+				const boardId = path.slice(7);
 				return { type: 'lists', boardId };
 			}
 			console.log(
@@ -66,7 +66,7 @@ export const getRecycleItems = () =>
 				return lists.filter(
 					list =>
 						list.status === statuses.lists.recycle &&
-						Number(list.boardId) === instanceType.boardId
+						list.boardId === instanceType.boardId
 				);
 			}
 			return [];
